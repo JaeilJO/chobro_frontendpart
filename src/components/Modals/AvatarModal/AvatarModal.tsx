@@ -7,7 +7,7 @@ export interface AvatarModalProps {
 }
 
 const AvatarModal = ({ modal }: AvatarModalProps) => {
-    const avatarModalItems = [{ title: 'LOGOUT', type: 'button', onClick: '' }];
+    const avatarModalItems = [{ title: 'LOGOUT', type: 'button', onClick: () => {} }];
     return (
         <StyledAvatarModal modal={modal}>
             {avatarModalItems.map((item) =>
