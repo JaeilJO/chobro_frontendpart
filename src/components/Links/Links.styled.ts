@@ -32,6 +32,7 @@ export const NavigationLinkStyled = styled(Link)<NavigationLinkStyledProps>`
     }
     :hover {
         color: ${({ theme: { colors } }) => colors.primary};
+        opacity: ${({ active }) => (active ? '90%' : '100%')};
     }
     @media screen and (max-width: 800px) {
         display: none;
