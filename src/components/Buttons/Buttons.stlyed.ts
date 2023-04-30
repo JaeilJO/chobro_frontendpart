@@ -8,4 +8,8 @@ export const StyledLoginButton = styled.button`
     font-size: ${({ theme: { fontSize } }) => fontSize.md};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
     color: ${({ theme: { colors } }) => colors.white};
+    cursor: pointer;
+    :hover {
+        opacity: 90%;
+    }
 `;
