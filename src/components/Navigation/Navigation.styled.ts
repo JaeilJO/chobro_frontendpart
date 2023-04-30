@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const StyledNavigation = styled.nav`
     gap: 50px;
     display: flex;
+    flex-grow: 1;
     justify-content: flex-end;
-    width: 100%;
     padding: 0 50px;
 `;
 

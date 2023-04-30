@@ -1,7 +1,17 @@
-import { StyledAvatar } from './Avatar.styled';
+import AvatarModal from '../Modals/AvatarModal/AvatarModal';
+import { AvatarBox, StyledAvatar } from './Avatar.styled';
 
-const Avatar = () => {
-    return <StyledAvatar>J</StyledAvatar>;
+interface AvatarPorps {
+    lastName: string;
+}
+
+const Avatar = ({ lastName }: AvatarPorps) => {
+    return (
+        <AvatarBox>
+            <StyledAvatar>{lastName}</StyledAvatar>
+            <AvatarModal />
+        </AvatarBox>
+    );
 };
 
 export default Avatar;

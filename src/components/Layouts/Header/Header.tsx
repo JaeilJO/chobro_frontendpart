@@ -6,15 +6,14 @@ import LoginButton from '../../Buttons/LoginButton';
 import Avatar from '../../Avatar/Avatar';
 
 const Header = () => {
-    const [login, setLogin] = useState(false);
+    const [login, setLogin] = useState(true);
 
     return (
         <StyledHeader>
             <HeaderContents>
                 <Logo href="/" />
                 {login ? <Navigation /> : <></>}
-                <Avatar></Avatar>
-                {/* <LoginButton/> */}
+                {login ? <Avatar lastName="Jo" /> : <LoginButton />}
             </HeaderContents>
         </StyledHeader>
     );
