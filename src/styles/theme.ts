@@ -8,6 +8,7 @@ const colors = {
     gray: '#E2E2E2',
     danger: '#FF8181',
     warning: '#FFBD3C',
+    white: 'ffffff',
 };
 
 const fontSize = {
