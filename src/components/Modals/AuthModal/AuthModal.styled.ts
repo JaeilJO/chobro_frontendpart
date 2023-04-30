@@ -12,16 +12,20 @@ export const ModalBackground = styled.div`
     align-items: center;
 `;
 
-export const StyledLoginSignUpModal = styled.div`
+export const StyledAuthModal = styled.div`
     z-index: 2;
-    width: 700px;
-    height: 80%;
+    width: 600px;
+    height: 900px;
     border-radius: 10px;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     display: flex;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @media screen and(max-width: 700px) {
         width: 100%;
+        height: 400px;
     }
 `;

@@ -4,11 +4,11 @@ import Logo from '../../Logo/Logo';
 import Navigation from '../../Navigation/Navigation';
 import LoginButton from '../../Buttons/LoginButton/LoginButton';
 import Avatar from '../../Avatar/Avatar';
-import LoginSingupModal from '../../Modals/LoginSignUpModal/LoginSignUpModal';
+import LoginSingupModal from '../../Modals/AuthModal/AuthUpModal';
 
 const Header = () => {
     const [login, setLogin] = useState(false);
-    const [loginSignUpModal, setLoginSignUpModal] = useState(false);
+    const [AuthModal, setAuthModal] = useState(false);
 
     return (
         <>
@@ -16,10 +16,14 @@ const Header = () => {
                 <HeaderContents>
                     <Logo href="/" />
                     {login ? <Navigation /> : <></>}
-                    {login ? <Avatar lastName="Jo" /> : <LoginButton setLoginSignUpModal={setLoginSignUpModal} />}
+                    {login ? (
+                        <Avatar lastName="Jo" />
+                    ) : (
+                        <LoginButton AuthModal={AuthModal} setAuthModal={setAuthModal} />
+                    )}
                 </HeaderContents>
             </StyledHeader>
-            {loginSignUpModal ? <LoginSingupModal setLoginSignUpModal={setLoginSignUpModal} /> : <></>}
+            {AuthModal ? <LoginSingupModal setAuthModal={setAuthModal} /> : <></>}
         </>
     );
 };

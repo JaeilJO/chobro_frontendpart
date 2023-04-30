@@ -13,7 +13,7 @@ const colors = {
 
 const fontSize = {
     xl: '38px',
-    lg: '32px',
+    lg: '24px',
     md: '16px',
     sm: '12px',
 };

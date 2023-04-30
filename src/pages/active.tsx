@@ -1,5 +1,5 @@
 import Header from '../components/Layouts/Header/Header';
-import LoginModal from '../components/Modals/LoginSignUpModal/LoginSignUpModal';
+import LoginModal from '../components/Modals/AuthModal/AuthUpModal';
 
 const Active = () => {
     return (

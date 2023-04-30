@@ -1,16 +1,16 @@
 import { useCallback } from 'react';
-import LoginModal from '../../Modals/LoginSignUpModal/LoginSignUpModal';
+import LoginModal from '../../Modals/AuthModal/AuthUpModal';
 import { StyledLoginButton } from './LoginButtons.stlyed';
 
 interface LoginButtonProps {
-    setLoginSignUpModal: React.Dispatch<React.SetStateAction<boolean>>;
-    loginSignUpModal: boolean;
+    setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
+    AuthModal: boolean;
 }
 
-const LoginButton = ({ loginSignUpModal, setLoginSignUpModal }: LoginButtonProps) => {
+const LoginButton = ({ AuthModal, setAuthModal }: LoginButtonProps) => {
     const onClick = useCallback(() => {
-        setLoginSignUpModal(!loginSignUpModal);
-    }, [loginSignUpModal]);
+        setAuthModal(!AuthModal);
+    }, [AuthModal]);
     return (
         <>
             <StyledLoginButton onClick={onClick}>LOGIN</StyledLoginButton>
