@@ -4,20 +4,29 @@ import SignUpModal from '../SignUpModal/SignUpModal';
 import LoginModalContents from './LoginModalContents/LoginModalContents';
 
 interface LoginSingupModalProps {
-    openLoginSignUpModal: MouseEventHandler<HTMLDivElement>;
+    setLoginSignUpModal: React.Dispatch<React.SetStateAction<boolean>>;
+    loginSignUpModal: boolean;
 }
 
-const LoginSingupModal = ({ openLoginSignUpModal }: LoginSingupModalProps) => {
+const LoginSingupModal = ({ setLoginSignUpModal }: LoginSingupModalProps) => {
     const [modalMode, setModalMode] = useState('login');
 
     const changemodalMode = useCallback(() => {
         modalMode === 'login' ? setModalMode('signup') : setModalMode('login');
     }, [modalMode]);
 
+    const remoteLoginSignUpModal = () => {
+        setLoginSignUpModal((currentState) => !currentState);
+    };
+
+    const handleLoginSignUpModalClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
+
     return (
         <>
-            <ModalBackground onClick={openLoginSignUpModal}>
-                <StyledLoginSignUpModal>
+            <ModalBackground onClick={remoteLoginSignUpModal}>
+                <StyledLoginSignUpModal onClick={handleLoginSignUpModalClick}>
                     <LoginModalContents modalMode={modalMode}>
                         Dont'have an account? <button onClick={changemodalMode}>Sign up</button>
                     </LoginModalContents>

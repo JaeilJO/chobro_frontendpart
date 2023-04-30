@@ -10,20 +10,16 @@ const Header = () => {
     const [login, setLogin] = useState(false);
     const [loginSignUpModal, setLoginSignUpModal] = useState(false);
 
-    const openLoginSignUpModal = useCallback(() => {
-        setLoginSignUpModal(!loginSignUpModal);
-    }, [loginSignUpModal]);
-
     return (
         <>
             <StyledHeader>
                 <HeaderContents>
                     <Logo href="/" />
                     {login ? <Navigation /> : <></>}
-                    {login ? <Avatar lastName="Jo" /> : <LoginButton onClick={openLoginSignUpModal} />}
+                    {login ? <Avatar lastName="Jo" /> : <LoginButton setLoginSignUpModal={setLoginSignUpModal} />}
                 </HeaderContents>
             </StyledHeader>
-            {loginSignUpModal ? <LoginSingupModal openLoginSignUpModal={openLoginSignUpModal} /> : <></>}
+            {loginSignUpModal ? <LoginSingupModal setLoginSignUpModal={setLoginSignUpModal} /> : <></>}
         </>
     );
 };

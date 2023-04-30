@@ -13,6 +13,7 @@ export const ModalBackground = styled.div`
 `;
 
 export const StyledLoginSignUpModal = styled.div`
+    z-index: 2;
     width: 700px;
     height: 80%;
     border-radius: 10px;
