@@ -1,5 +1,7 @@
+import { StyledLoginButton } from './Buttons.stlyed';
+
 const LoginButton = () => {
-    return <button>LoginButton</button>;
+    return <StyledLoginButton>LoginButton</StyledLoginButton>;
 };
 
 export default LoginButton;

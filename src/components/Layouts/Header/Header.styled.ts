@@ -13,6 +13,7 @@ export const HeaderContents = styled.div`
     width: 1200px;
     margin: auto;
     height: 100%;
+    padding: 20px 0;
 
     @media screen and (max-width: 1200px) {
         width: 100%;
