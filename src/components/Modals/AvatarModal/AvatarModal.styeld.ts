@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AvatarModalProps } from './AvatarModal';
 
-const StyledAvatarModal = styled.ul<AvatarModalProps>`
+export const StyledAvatarModal = styled.ul<AvatarModalProps>`
     background-color: white;
     list-style-type: none;
     width: 150px;
@@ -14,6 +14,9 @@ const StyledAvatarModal = styled.ul<AvatarModalProps>`
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: 320ms;
+    opacity: ${({ modal }) => (modal ? `100%` : `0%`)};
 `;
 
-export default StyledAvatarModal;
+export const AvatarModalItem = styled.li`
+    height: 30px;
+`;

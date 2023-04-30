@@ -1,6 +1,6 @@
 import NavigationLink from '../Links/NavigationLink';
 import StyledNavigation from './Navigation.styled';
-import LoginButton from '../Buttons/LoginButton';
+import LoginButton from '../Buttons/LoginButton/LoginButton';
 import { useRouter } from 'next/router';
 
 const navigationItems = [

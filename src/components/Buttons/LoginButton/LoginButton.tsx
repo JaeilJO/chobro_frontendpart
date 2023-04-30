@@ -1,4 +1,4 @@
-import { StyledLoginButton } from './Buttons.stlyed';
+import { StyledLoginButton } from './LoginButtons.stlyed';
 
 const LoginButton = () => {
     return <StyledLoginButton>LOGIN</StyledLoginButton>;
