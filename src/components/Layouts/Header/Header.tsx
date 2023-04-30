@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { HeaderContents, StyledHeader } from './Header.styled';
 import Logo from '../../Logo/Logo';
 import Navigation from '../../Navigation/Navigation';
 import LoginButton from '../../Buttons/LoginButton/LoginButton';
 import Avatar from '../../Avatar/Avatar';
-import LoginModal from '../../Modals/LoginModal/LoginModal';
+import LoginSingupModal from '../../Modals/LoginSignUpModal/LoginSignUpModal';
 
 const Header = () => {
     const [login, setLogin] = useState(false);
+    const [loginSignUpModal, setLoginSignUpModal] = useState(false);
+
+    const openLoginSignUpModal = useCallback(() => {
+        setLoginSignUpModal(!loginSignUpModal);
+    }, [loginSignUpModal]);
 
     return (
         <>
@@ -15,10 +20,10 @@ const Header = () => {
                 <HeaderContents>
                     <Logo href="/" />
                     {login ? <Navigation /> : <></>}
-                    {login ? <Avatar lastName="Jo" /> : <LoginButton />}
+                    {login ? <Avatar lastName="Jo" /> : <LoginButton onClick={openLoginSignUpModal} />}
                 </HeaderContents>
             </StyledHeader>
-            <LoginModal />
+            {loginSignUpModal ? <LoginSingupModal openLoginSignUpModal={openLoginSignUpModal} /> : <></>}
         </>
     );
 };

@@ -12,12 +12,14 @@ export const ModalBackground = styled.div`
     align-items: center;
 `;
 
-export const StyledLoginModal = styled.div`
+export const StyledLoginSignUpModal = styled.div`
     width: 700px;
     height: 80%;
     border-radius: 10px;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    overflow: hidden;
     @media screen and(max-width: 700px) {
         width: 100%;
     }

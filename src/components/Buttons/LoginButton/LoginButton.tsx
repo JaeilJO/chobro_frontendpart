@@ -1,10 +1,10 @@
-import LoginModal from '../../Modals/LoginModal/LoginModal';
+import LoginModal from '../../Modals/LoginSignUpModal/LoginSignUpModal';
 import { StyledLoginButton } from './LoginButtons.stlyed';
 
-const LoginButton = () => {
+const LoginButton = ({ onClick }) => {
     return (
         <>
-            <StyledLoginButton>LOGIN</StyledLoginButton>
+            <StyledLoginButton onClick={onClick}>LOGIN</StyledLoginButton>
         </>
     );
 };
