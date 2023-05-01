@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import jwt_decode from 'jwt-decode';
 
-interface accessTokenInfo {
-    accessToken: string;
+interface JsonWebTokenDecode {
+    username: string;
+    exp: number;
 }
 
 export const authApi = createApi({
@@ -16,6 +18,17 @@ export const authApi = createApi({
                 method: 'POST',
                 body,
             }),
+
+            transformResponse: (result: string) => {
+                const jwt_decoded: JsonWebTokenDecode = jwt_decode(result);
+
+                const transRes = {
+                    token: result,
+                    userName: jwt_decoded.username,
+                    exp: jwt_decoded.exp,
+                };
+                return transRes;
+            },
         }),
     }),
 });

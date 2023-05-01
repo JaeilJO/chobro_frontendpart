@@ -1,20 +1,32 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
+
+//Component
 import AvatarModal from '../Modals/AvatarModal/AvatarModal';
+
+//Style
 import { AvatarBox, StyledAvatar } from './Avatar.styled';
 
-interface AvatarPorps {
-    lastName: string;
-}
+//Types
+import { AvatarPorps } from './Avatar.types';
+
+//Redux
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { toggleHeaderAvatarModal } from '../../redux/features/modalStatusSlice';
 
 const Avatar = ({ lastName }: AvatarPorps) => {
-    const [modal, setModal] = useState(false);
-    const onClick = useCallback(() => {
-        setModal(!modal);
-    }, [modal]);
+    //for redux
+    const avatarModalStatus = useAppSelector((state) => state.modalStatus.headerAvatarModal);
+    const dispatch = useAppDispatch();
+
+    //toggle onOff Modal
+    const toggleAvatarModal = useCallback(() => {
+        dispatch(toggleHeaderAvatarModal());
+    }, []);
+
     return (
         <AvatarBox>
-            <StyledAvatar onClick={onClick}>{lastName}</StyledAvatar>
-            <AvatarModal modal={modal} />
+            <StyledAvatar onClick={toggleAvatarModal}>{lastName}</StyledAvatar>
+            <AvatarModal modal={avatarModalStatus} />
         </AvatarBox>
     );
 };

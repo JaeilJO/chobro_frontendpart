@@ -1,11 +1,8 @@
-import { ColorTypes } from '../../../styles/theme';
+//Style
 import { StyledAuthButton } from './AuthButton.styled';
 
-interface AuthButtonProps {
-    title: string;
-    backgorundColor: keyof ColorTypes;
-    color: keyof ColorTypes;
-}
+//Types
+import { AuthButtonProps } from './AuthButton.types';
 
 const AuthButton = ({ title, backgorundColor, color }: AuthButtonProps) => {
     return (

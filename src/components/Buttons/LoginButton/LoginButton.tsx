@@ -1,21 +1,22 @@
 import { useCallback } from 'react';
-import LoginModal from '../../Modals/AuthModal/AuthUpModal';
+
+//Style
 import { StyledLoginButton } from './LoginButtons.stlyed';
 
-interface LoginButtonProps {
-    setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
-    AuthModal: boolean;
-}
+//Redux
+import { useAppDispatch } from '../../../redux/hooks';
+import { toggleHeaderLoginButtonModal } from '../../../redux/features/modalStatusSlice';
 
-const LoginButton = ({ AuthModal, setAuthModal }: LoginButtonProps) => {
-    const onClick = useCallback(() => {
-        setAuthModal(!AuthModal);
-    }, [AuthModal]);
-    return (
-        <>
-            <StyledLoginButton onClick={onClick}>LOGIN</StyledLoginButton>
-        </>
-    );
+const LoginButton = () => {
+    //for redux
+    const dispatch = useAppDispatch();
+
+    //toggle onOff Modal
+    const toggleLoginButtonModal = useCallback(() => {
+        dispatch(toggleHeaderLoginButtonModal());
+    }, []);
+
+    return <StyledLoginButton onClick={toggleLoginButtonModal}>LOGIN</StyledLoginButton>;
 };
 
 export default LoginButton;

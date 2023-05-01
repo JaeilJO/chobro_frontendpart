@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const StyledNavigation = styled.nav`
-    gap: 50px;
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
+export const StyledNavigation = styled.nav`
+    //size
     padding: 0 50px;
+    //flex
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px;
+    flex-grow: 1;
 `;
-
-export default StyledNavigation;

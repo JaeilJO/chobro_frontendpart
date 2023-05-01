@@ -1,15 +1,8 @@
 import NavigationLink from '../Links/NavigationLink';
-import StyledNavigation from './Navigation.styled';
-import LoginButton from '../Buttons/LoginButton/LoginButton';
-import { useRouter } from 'next/router';
 
-const navigationItems = [
-    {
-        title: 'Active',
-        href: '/active',
-    },
-    { title: 'Inactive', href: '/inactive' },
-];
+import { useRouter } from 'next/router';
+import { StyledNavigation } from './Navigation.styled';
+import { navigationItems } from './NavigationItems';
 
 const Navigation = () => {
     const router = useRouter();

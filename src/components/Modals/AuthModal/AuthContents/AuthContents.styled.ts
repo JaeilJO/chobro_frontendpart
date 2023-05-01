@@ -1,17 +1,20 @@
 import styled from 'styled-components';
-
-interface StyledAuthContentsProps {
-    modalMode: string;
-    mode: string;
-}
+import { StyledAuthContentsProps } from './AuthContents.types';
 
 export const StyledAuthContents = styled.div<StyledAuthContentsProps>`
+    //position
+    position: relative;
+
+    //size
     width: ${({ modalMode, mode }) => (modalMode === mode ? `100%` : `0%`)};
     height: 100%;
+
+    //flex
     display: flex;
-    position: relative;
     justify-content: center;
     align-items: center;
+
+    //etc
     white-space: nowrap;
     transition: 320ms;
     overflow: hidden;

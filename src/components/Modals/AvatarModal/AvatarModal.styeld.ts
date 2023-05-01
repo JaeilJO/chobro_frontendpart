@@ -1,20 +1,33 @@
-import styled from 'styled-components';
-import { AvatarModalProps } from './AvatarModal';
+import styled, { css } from 'styled-components';
+import { AvatarModalProps } from './AvatarModal.types';
 
 export const StyledAvatarModal = styled.ul<AvatarModalProps>`
-    background-color: white;
-    list-style-type: none;
-    width: 150px;
-    height: ${({ modal }) => (modal ? `` : `0px`)};
+    //position
     position: absolute;
     right: 0;
-    border-radius: 3px;
     top: 60px;
-    padding: ${({ modal }) => (modal ? `10px` : `0px`)};
+
+    //size
+    width: 150px;
+
+    //border
+    border-radius: 3px;
+
+    //color
+    background-color: white;
+
+    //for modal
+    ${({ modal }) => css`
+        opacity: ${modal ? `100%` : `0%`};
+        height: ${modal ? `` : `0px`};
+        padding: ${modal ? `10px` : `0px`};
+    `}
+
+    //etc
+    list-style-type: none;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: 320ms;
-    opacity: ${({ modal }) => (modal ? `100%` : `0%`)};
 `;
 
 export const AvatarModalItem = styled.li`

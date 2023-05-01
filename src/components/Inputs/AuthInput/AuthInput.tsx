@@ -8,21 +8,18 @@ interface AuthInputProps {
     onChange: (...event: any[]) => void;
 }
 
+//onChange event handler is used for React Hook Form
 const AuthInput = ({ type, title, onChange }: AuthInputProps) => {
-    const [active, setActive] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
+    const [active, setActive] = useState(false);
 
+    //Handler For
     const onFocus = useCallback(() => {
         setActive(true);
-    }, [active]);
-
+    }, []);
     const onBlur = useCallback(() => {
-        if (inputRef.current?.value === '') {
-            setActive(false);
-        } else {
-            setActive(true);
-        }
-    }, [active]);
+        setActive(inputRef.current?.value !== '');
+    }, []);
 
     return (
         <AuthInputContainer>

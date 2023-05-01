@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authModalModeReducer from '../features/authModalModeSlice';
-import { userApi } from '../services/userApi';
-import { authApi } from '../services/authApi';
-import userReduecer from '../features/userSlice';
+import modalStatusReducer from './features/modalStatusSlice';
+import { userApi } from './services/userApi';
+import { authApi } from './services/authApi';
+import userReduecer from './features/userSlice';
 
 export const store = configureStore({
     reducer: {
-        authModalMode: authModalModeReducer,
+        modalStatus: modalStatusReducer,
         user: userReduecer,
         [userApi.reducerPath]: userApi.reducer,
         [authApi.reducerPath]: authApi.reducer,

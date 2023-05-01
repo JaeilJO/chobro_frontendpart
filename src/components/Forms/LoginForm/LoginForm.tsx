@@ -1,42 +1,35 @@
-import { changeMode } from '../../../features/authModalModeSlice';
+// Style
 import { AuthFormTitle, RecomendText, RecomendTextButton, StyledAuthForm } from '../AuthFormStyle';
-import AuthButton from '../../Buttons/AuthButton/AuthButton';
-import AuthInput from '../../Input/AuthInput';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import AuthLink from '../../Links/AuthLink/AuthLink';
-import { useLoginMutation } from '../../../services/authApi';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { setToken } from '../../../features/userSlice';
-const inputs: InputInfo[] = [
-    {
-        type: 'email',
-        formType: 'username',
-        title: 'Email',
-    },
-    {
-        type: 'password',
-        formType: 'password',
-        title: 'Password',
-    },
-];
 
-type InputInfo = {
-    formType: 'username' | 'password';
-    type: string;
-    title: string;
-};
-interface Inputs {
-    username: string;
-    password: string;
-}
+// Component
+import AuthButton from '../../Buttons/AuthButton/AuthButton';
+import AuthLink from '../../Links/AuthLink/AuthLink';
+import AuthInput from '../../Inputs/AuthInput/AuthInput';
+
+// React Hook Form
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+
+// Redux
+import { useLoginMutation } from '../../../redux/services/authApi';
+import { useAppDispatch } from '../../../redux/hooks';
+import { setToken } from '../../../redux/features/userSlice';
+import { changeMode } from '../../../redux/features/modalStatusSlice';
+
+// Datas
+import { inputItems } from './LoginFormInputItems';
+
+// Types
+import { Inputs } from './LoginForm.types';
 
 const LoginForm = () => {
+    //for redux
     const dispatch = useAppDispatch();
-    const [login, { isLoading, data }] = useLoginMutation();
+    const [login] = useLoginMutation();
     const changeModalMode = () => {
         dispatch(changeMode('signup'));
     };
 
+    // for reactHookForm
     const { handleSubmit, control } = useForm({
         defaultValues: {
             username: '',
@@ -47,7 +40,6 @@ const LoginForm = () => {
     const onSubmit: SubmitHandler<Inputs> = async (userInfo) => {
         const res = await login(userInfo);
         if ('data' in res) {
-            console.log(res.data);
             dispatch(setToken(res.data));
         } else {
             console.log('실패');
@@ -57,16 +49,19 @@ const LoginForm = () => {
     return (
         <StyledAuthForm onSubmit={handleSubmit(onSubmit)}>
             <AuthFormTitle>Sign Up</AuthFormTitle>
-            {inputs.map((input) => (
+
+            {/* 로그인을 위한 정보 */}
+            {inputItems.map((inputItem) => (
                 <Controller
-                    key={input.formType}
+                    key={inputItem.formType}
                     control={control}
-                    name={input.formType}
+                    name={inputItem.formType}
                     render={({ field: { onChange } }) => (
-                        <AuthInput onChange={onChange} type={input.type} title={input.title} />
+                        <AuthInput onChange={onChange} type={inputItem.type} title={inputItem.title} />
                     )}
                 />
             ))}
+
             <AuthButton title="Login" backgorundColor={'primary'} color={'white'} />
 
             <RecomendText>Or</RecomendText>

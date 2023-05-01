@@ -1,10 +1,8 @@
-import { MouseEventHandler } from 'react';
+//Style
 import { StyledAvatarModalButton } from './AvatarModalButton.styled';
 
-interface AvatarModalButtonProps {
-    title: string;
-    onClick?: MouseEventHandler<HTMLButtonElement>;
-}
+//Types
+import { AvatarModalButtonProps } from './AvatarModalButton.types';
 
 const AvatarModalButton = ({ title, onClick }: AvatarModalButtonProps) => {
     return <StyledAvatarModalButton onClick={onClick}>{title}</StyledAvatarModalButton>;

@@ -1,18 +1,22 @@
 import styled from 'styled-components';
-import { ColorTypes } from '../../../styles/theme';
-
-interface StyledAuthButtonProps {
-    backgroundColor: keyof ColorTypes;
-    color: keyof ColorTypes;
-}
+import { StyledAuthButtonProps } from './AuthButton.types';
 
 export const StyledAuthButton = styled.button<StyledAuthButtonProps>`
+    //size
     height: 70px;
+
+    //font
     font-size: ${({ theme: { fontSize } }) => fontSize.lg};
+
+    //border
     border: none;
+    border-radius: 10px;
+
+    //color
     background-color: ${({ theme: { colors }, backgroundColor }) => colors[backgroundColor]};
     color: ${({ theme: { colors }, color }) => colors[color]};
-    border-radius: 10px;
+
+    //etc
     cursor: pointer;
     :hover {
         opacity: 90%;

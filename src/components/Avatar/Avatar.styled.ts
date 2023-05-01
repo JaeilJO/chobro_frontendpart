@@ -5,17 +5,29 @@ export const AvatarBox = styled.div`
 `;
 
 export const StyledAvatar = styled.div`
-    background-color: ${({ theme: { colors } }) => colors.primary};
+    //size
     width: 50px;
     height: 50px;
+
+    //color
+    background-color: ${({ theme: { colors } }) => colors.primary};
+    color: ${({ theme: { colors } }) => colors.white};
+
+    // flex
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // font
     font-size: ${({ theme: { fontSize } }) => fontSize.md};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
-    color: ${({ theme: { colors } }) => colors.white};
+
+    //border
     border-radius: 50%;
+
+    //etc
     cursor: pointer;
+
     :hover {
         opacity: 90%;
     }

@@ -1,22 +1,28 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { AuthLabelProps } from './AuthInput.types';
 
 export const AuthInputContainer = styled.div`
     position: relative;
 `;
 
-interface AuthLabelProps {
-    active: boolean;
-}
-
 export const AuthLabel = styled.label<AuthLabelProps>`
+    //position
     position: absolute;
     left: 5px;
-    top: ${({ active }) => (active ? `-15px` : `15px`)};
-    transition: 320ms;
-    font-size: ${({ theme: { fontSize }, active }) => (active ? fontSize.sm : fontSize.md)};
-    font-weight: ${({ theme: { fontWeight }, active }) => (active ? fontWeight.bold : fontWeight.medium)};
-    color: ${({ theme: { colors }, active }) => (active ? colors.primary : colors.gray)};
+
+    //Active Status
+    ${({ theme: { fontSize, fontWeight, colors }, active }) => css`
+        top: ${active ? `-15px` : `15px`};
+        font-size: ${active ? fontSize.sm : fontSize.md};
+        font-weight: ${active ? fontWeight.bold : fontWeight.medium};
+        color: ${active ? colors.primary : colors.gray};
+    `}
+
+    //etc
     pointer-events: none;
+    transition: 320ms;
+
+    //Media Queries
     @media screen and (max-width: 500px) {
         width: 100%;
         text-align: center;
@@ -24,19 +30,24 @@ export const AuthLabel = styled.label<AuthLabelProps>`
 `;
 
 export const StyledAuthInput = styled.input`
+    //size
+    width: 100%;
     height: 50px;
     padding: 5px 5px;
+
+    //border
     border: none;
     border-bottom: 1px solid ${({ theme: { colors } }) => colors.gray};
+
+    //font
     font-size: ${({ theme: { fontSize } }) => fontSize.md};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.light};
-
-    width: 100%;
 
     :focus {
         outline: none;
     }
 
+    //Media Queries
     @media screen and (max-width: 500px) {
         padding: 0;
         text-align: center;

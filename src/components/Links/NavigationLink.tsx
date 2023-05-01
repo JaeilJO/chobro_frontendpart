@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { NavigationLinkStyled } from './Links.styled';
 
 interface NavigationLinkProps {

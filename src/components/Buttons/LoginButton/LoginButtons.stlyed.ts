@@ -1,13 +1,22 @@
 import styled from 'styled-components';
 
 export const StyledLoginButton = styled.button`
-    background-color: ${({ theme: { colors } }) => colors.primary};
-    border: none;
+    //size
     width: 150px;
+
+    //color
+    background-color: ${({ theme: { colors } }) => colors.primary};
+    color: ${({ theme: { colors } }) => colors.white};
+
+    //border
+    border: none;
     border-radius: 10px;
+
+    //font
     font-size: ${({ theme: { fontSize } }) => fontSize.md};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
-    color: ${({ theme: { colors } }) => colors.white};
+
+    //etc
     cursor: pointer;
     :hover {
         opacity: 90%;
