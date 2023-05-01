@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-export const StyledSignUpForm = styled.form`
+export const StyledAuthForm = styled.form`
     width: 350px;
     height: 650px;
     display: flex;
@@ -12,7 +11,7 @@ export const StyledSignUpForm = styled.form`
     }
 `;
 
-export const SignUpFormTitle = styled.div`
+export const AuthFormTitle = styled.div`
     font-size: ${({ theme: { fontSize } }) => fontSize.xl};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
     color: ${({ theme: { colors } }) => colors.primary};

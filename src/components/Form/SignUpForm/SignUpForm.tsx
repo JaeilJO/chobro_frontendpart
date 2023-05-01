@@ -1,12 +1,13 @@
 import React, { Dispatch, MouseEventHandler, SetStateAction, useCallback, useState } from 'react';
 import AuthButton from '../../Buttons/AuthButton/AuthButton';
 import AuthInput from '../../Input/AuthInput';
-import { RecomendText, RecomendTextButton, SignUpFormTitle, StyledSignUpForm } from './SignUpForm.styled';
+
 import { useAppDispatch } from '../../../store/hooks';
 import { changeMode } from '../../../features/authModalModeSlice';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useSignUpMutation } from '../../../services/userApi';
 import { InputInfo, Inputs } from './types';
+import { AuthFormTitle, RecomendText, RecomendTextButton, StyledAuthForm } from '../AuthFormStyle';
 
 const inputs: InputInfo[] = [
     {
@@ -49,11 +50,11 @@ const SignUpForm = () => {
     });
 
     const onSubmit: SubmitHandler<Inputs> = async (userInfo) => {
-        try {
-            const res = await signUp(userInfo);
-            res.data ? dispatch(changeMode('login')) : console.log('실패');
-        } catch (err) {
-            console.error(err);
+        const res = await signUp(userInfo);
+        if ('data' in res) {
+            dispatch(changeMode('login'));
+        } else {
+            console.log('실패');
         }
     };
 
@@ -64,8 +65,8 @@ const SignUpForm = () => {
     };
 
     return (
-        <StyledSignUpForm onSubmit={handleSubmit(onSubmit)}>
-            <SignUpFormTitle>Sign Up</SignUpFormTitle>
+        <StyledAuthForm onSubmit={handleSubmit(onSubmit)}>
+            <AuthFormTitle>Sign Up</AuthFormTitle>
             {inputs.map((input) => (
                 <Controller
                     key={input.formType}
@@ -80,7 +81,7 @@ const SignUpForm = () => {
             <RecomendText>
                 I already have an account<RecomendTextButton onClick={moveToLoginModal}>Login!</RecomendTextButton>
             </RecomendText>
-        </StyledSignUpForm>
+        </StyledAuthForm>
     );
 };
 

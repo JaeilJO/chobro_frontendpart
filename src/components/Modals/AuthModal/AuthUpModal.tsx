@@ -5,6 +5,7 @@ import SignUpForm from '../../Form/SignUpForm/SignUpForm';
 import AuthContents from './AuthContents/AuthContents';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { changeMode } from '../../../features/authModalModeSlice';
+import LoginForm from '../../Form/LoginForm/LoginForm';
 
 interface LoginSingupModalProps {
     setAuthModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,10 +14,6 @@ interface LoginSingupModalProps {
 const AuthModal = ({ setAuthModal }: LoginSingupModalProps) => {
     const modalMode = useAppSelector((state) => state.authModalMode.mode);
     const dispatch = useAppDispatch();
-
-    const changemodalMode = useCallback(() => {
-        dispatch(changeMode('signup'));
-    }, [modalMode]);
 
     const remoteAuthModal = () => {
         setAuthModal((currentState) => !currentState);
@@ -31,7 +28,7 @@ const AuthModal = ({ setAuthModal }: LoginSingupModalProps) => {
             <ModalBackground onClick={remoteAuthModal}>
                 <StyledAuthModal onClick={handleAuthModalClick}>
                     <AuthContents modalMode={modalMode} mode={'login'}>
-                        Dont'have an account? <button onClick={changemodalMode}>Sign up</button>
+                        <LoginForm />
                     </AuthContents>
                     <AuthContents modalMode={modalMode} mode={'signup'}>
                         <SignUpForm />

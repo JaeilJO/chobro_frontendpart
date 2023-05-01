@@ -17,7 +17,12 @@ const Navigation = () => {
     return (
         <StyledNavigation>
             {navigationItems.map((item) => (
-                <NavigationLink title={item.title} href={item.href} pathName={pathName}></NavigationLink>
+                <NavigationLink
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                    pathName={pathName}
+                ></NavigationLink>
             ))}
         </StyledNavigation>
     );

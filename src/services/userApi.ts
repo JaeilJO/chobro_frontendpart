@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-interface accessTokenInfo {
+interface User {
     username: string;
     firstName: string;
     lastName: string;
@@ -9,7 +9,8 @@ interface accessTokenInfo {
 }
 
 export const userApi = createApi({
-    reducerPath: 'authApi',
+    reducerPath: 'userApi',
+    tagTypes: ['User'],
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/' }),
     endpoints: (builder) => ({
         signUp: builder.mutation({
