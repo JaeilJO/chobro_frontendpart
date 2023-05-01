@@ -25,7 +25,7 @@ const AuthInput = ({ type, title }: AuthInputProps) => {
 
     return (
         <AuthInputContainer>
-            <StyledAuthInput type={type} ref={inputRef} onFocus={onFocus} onBlur={onBlur} />
+            <StyledAuthInput required type={type} ref={inputRef} onFocus={onFocus} onBlur={onBlur} />
             <AuthLabel active={active}>{title}</AuthLabel>
         </AuthInputContainer>
     );

@@ -13,6 +13,7 @@ export const ModalBackground = styled.div`
 `;
 
 export const StyledAuthModal = styled.div`
+    position: relative;
     z-index: 2;
     width: 600px;
     height: 900px;
@@ -21,7 +22,7 @@ export const StyledAuthModal = styled.div`
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     display: flex;
     overflow: hidden;
-    display: flex;
+
     justify-content: center;
     align-items: center;
     @media screen and(max-width: 700px) {
