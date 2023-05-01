@@ -9,7 +9,7 @@ export const StyledAuthContents = styled.div<StyledAuthContentsProps>`
     width: ${({ modalMode, mode }) => (modalMode === mode ? `100%` : `0%`)};
     height: 100%;
     display: flex;
-
+    position: relative;
     justify-content: center;
     align-items: center;
     white-space: nowrap;

@@ -5,9 +5,10 @@ import { useCallback, useRef, useState } from 'react';
 interface AuthInputProps {
     type: string;
     title: string;
+    onChange: (...event: any[]) => void;
 }
 
-const AuthInput = ({ type, title }: AuthInputProps) => {
+const AuthInput = ({ type, title, onChange }: AuthInputProps) => {
     const [active, setActive] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,7 +26,14 @@ const AuthInput = ({ type, title }: AuthInputProps) => {
 
     return (
         <AuthInputContainer>
-            <StyledAuthInput required type={type} ref={inputRef} onFocus={onFocus} onBlur={onBlur} />
+            <StyledAuthInput
+                onChange={onChange}
+                required
+                type={type}
+                ref={inputRef}
+                onFocus={onFocus}
+                onBlur={onBlur}
+            />
             <AuthLabel active={active}>{title}</AuthLabel>
         </AuthInputContainer>
     );
