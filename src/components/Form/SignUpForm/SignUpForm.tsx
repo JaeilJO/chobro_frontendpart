@@ -51,8 +51,10 @@ const SignUpForm = () => {
     const onSubmit: SubmitHandler<Inputs> = async (userInfo) => {
         try {
             const res = await signUp(userInfo);
-            dispatch(changeMode('login'));
-        } catch (err) {}
+            res.data ? dispatch(changeMode('login')) : console.log('실패');
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     // 곧지울예정
@@ -74,7 +76,6 @@ const SignUpForm = () => {
                     )}
                 />
             ))}
-
             <AuthButton title="Sign Up" backgorundColor={'primary'} color={'white'} />
             <RecomendText>
                 I already have an account<RecomendTextButton onClick={moveToLoginModal}>Login!</RecomendTextButton>

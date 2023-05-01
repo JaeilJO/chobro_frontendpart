@@ -28,7 +28,7 @@ export const StyledAuthInput = styled.input`
     padding: 5px 5px;
     border: none;
     border-bottom: 1px solid ${({ theme: { colors } }) => colors.gray};
-    font-size: ${({ theme: { fontSize } }) => fontSize.lg};
+    font-size: ${({ theme: { fontSize } }) => fontSize.md};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.light};
 
     width: 100%;

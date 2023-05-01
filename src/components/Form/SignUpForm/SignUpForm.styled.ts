@@ -41,17 +41,3 @@ export const RecomendTextButton = styled.button`
         opacity: 80%;
     }
 `;
-
-export const LoadingModal = styled.div`
-    background-color: ${({ theme: { colors } }) => colors.warning};
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    height: 50px;
-`;
-
-export const ErrorModal = styled.div``;
-
-export const SuccessModal = styled.div``;
