@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledTableActiveButton = styled.button`
+interface StyledTableActiveButtonProps {
+    data: string;
+}
+
+export const StyledTableActiveButton = styled.button<StyledTableActiveButtonProps>`
     background-color: ${({ theme: { colors }, data }) => (data === 'true' ? colors.second : colors.gray)};
     border: none;
     padding: 0.4em 0.8em;

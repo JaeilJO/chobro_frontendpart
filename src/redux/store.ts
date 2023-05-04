@@ -2,12 +2,15 @@ import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/t
 import modalStatusReducer from './features/modalStatusSlice';
 import { userApi } from './services/userApi';
 import { authApi } from './services/authApi';
-import userReduecer from './features/userSlice';
+
+import userReducer from './features/userSlice';
+import certReducer from './features/certSlice';
 import { MakeStore, createWrapper } from 'next-redux-wrapper';
 
 const reducers = {
     modalStatus: modalStatusReducer,
-    user: userReduecer,
+    user: userReducer,
+    cert: certReducer,
     [userApi.reducerPath]: userApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
 };

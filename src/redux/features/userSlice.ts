@@ -33,10 +33,10 @@ export const userSlice = createSlice({
     },
     reducers: {
         setToken: (state, action: PayloadAction<any>) => {
-            (state.token = action.payload.token),
-                (state.tokenExp = action.payload.exp),
-                (state.userName = action.payload.userName),
-                (state.isLoggedIn = true);
+            state.token = action.payload.token;
+            state.tokenExp = action.payload.exp;
+            state.userName = action.payload.userName;
+            state.isLoggedIn = true;
         },
     },
 });

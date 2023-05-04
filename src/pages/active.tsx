@@ -1,6 +1,6 @@
 import Header from '../components/Layouts/Header/Header';
 import Main from '../components/Layouts/Main/Main';
-import jwt_decode from 'jwt-decode';
+
 import { wrapper } from '../redux/store';
 import { parse } from 'cookie';
 import { setToken } from '../redux/features/userSlice';
@@ -32,21 +32,26 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     const cookie = context.req.cookies;
 
     const cookieIsEmpty = Object.keys(cookie).length === 0;
+    //쿠키가 존재하지 않는다면
+    if (cookieIsEmpty) {
+        return {
+            props: {},
+        };
+    }
+    //그 쿠키가 rt가 아니라면
+    if (cookie.rt === undefined) {
+        return {
+            props: {},
+        };
+    }
 
-    if (cookieIsEmpty) return { props: {} };
+    const { data } = await store.dispatch(authApi.endpoints.refresh.initiate(cookie.rt));
 
-    const refreshToken = cookie.rt;
-    console.log('보낼쿠키', refreshToken);
+    await store.dispatch(setToken({ token: data.token, exp: data.exp, userName: data.userName }));
 
-    const result = await store.dispatch(authApi.endpoints.refresh.initiate(refreshToken));
-    console.log('result?', result.error);
+    const newRefreshToken = await data.RefreshTokenValue;
 
-    const responseRefreshToken = await result.data.RefreshTokenValue;
-
-    context.res.setHeader('set-cookie', `rt=${responseRefreshToken}`);
-    console.log('받은 쿠키', responseRefreshToken);
-
-    store.dispatch(setToken(result.data));
+    context.res.setHeader('Set-Cookie', `rt=${newRefreshToken}`);
 
     return {
         props: {},

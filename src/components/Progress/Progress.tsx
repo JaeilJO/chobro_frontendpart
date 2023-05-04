@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { CurrentProgress, TotalProgress } from './Progress.styled';
 
-const Progress = ({ persent }) => {
+interface PrograssProps {
+    persent: number;
+}
+
+const Progress = ({ persent }: PrograssProps) => {
     const [persentStatus, setPersentStatus] = useState('safe');
 
     useEffect(() => {

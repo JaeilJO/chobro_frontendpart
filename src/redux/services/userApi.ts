@@ -20,7 +20,16 @@ export const userApi = createApi({
                 body,
             }),
         }),
+
+        getCert: builder.query({
+            query: (accessToken) => ({
+                url: `cert`,
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }),
+        }),
     }),
 });
 
-export const { useSignUpMutation } = userApi;
+export const { useSignUpMutation, useGetCertQuery } = userApi;

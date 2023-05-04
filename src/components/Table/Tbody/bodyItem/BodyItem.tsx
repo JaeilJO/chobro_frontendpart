@@ -13,7 +13,7 @@ const BodyItem = ({ data, type, sub_data }: TheadItemProps) => {
     if (type === 'is_active') {
         return (
             <StyledTBodyItem type={type}>
-                <TableActiveButton data={data} />
+                <TableActiveButton data={data} sub_data={sub_data} />
             </StyledTBodyItem>
         );
     }

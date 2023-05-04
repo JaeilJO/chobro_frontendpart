@@ -1,15 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import jwt_decode from 'jwt-decode';
 import { HYDRATE } from 'next-redux-wrapper';
+import jwt from 'jsonwebtoken';
 
-interface JsonWebTokenDecode {
+interface DecodedUserDataType {
     username: string;
     exp: number;
     iat?: number;
     user_id: string;
 }
 
-interface LoginResultData {
+interface LoginResultType {
     access_token: string;
 }
 
@@ -37,30 +37,38 @@ export const authApi = createApi({
                 method: 'POST',
                 body,
             }),
+            transformResponse: async (result: LoginResultType) => {
+                const token: string = result.access_token;
 
-            transformResponse: (result: LoginResultData) => {
-                const token = result.access_token;
-                const jwt_decoded: JsonWebTokenDecode = jwt_decode(token);
+                if (!token) {
+                    throw new Error('Token not found in the result');
+                }
+
+                const decodedUserData = jwt.decode(token) as DecodedUserDataType;
 
                 const transRes = {
                     token: token,
-                    userName: jwt_decoded.username,
-                    exp: jwt_decoded.exp,
+                    userName: decodedUserData.username,
+                    exp: decodedUserData.exp,
                 };
                 return transRes;
             },
         }),
+
+        //endPoint : /refresh
         refresh: builder.query({
             query: (refreshToken) => ({
                 url: `refresh`,
-
                 headers: {
                     Authorization: `Bearer ${refreshToken}`,
                 },
+
                 responseHandler: async (response) => {
                     const jwtString = await response.text();
                     const setCookieHeader = response.headers.get('set-cookie');
-                    if (setCookieHeader === null) return { jwtString };
+                    if (setCookieHeader === null) {
+                        throw new Error("don't have a refreshToken");
+                    }
                     return {
                         jwtString,
                         setCookieHeader,
@@ -68,9 +76,11 @@ export const authApi = createApi({
                 },
             }),
             transformResponse: async (result: ResultData) => {
-                //jwt 디코드해서 필요한 값 뽑기
+                console.log(result);
+                //jrwt 디코드해서 필요한 값 뽑기
                 const jwtString = result.jwtString;
-                const jwt_decoded: JsonWebTokenDecode = await jwt_decode(jwtString);
+
+                const jwt_decoded = jwt.decode(jwtString) as DecodedUserDataType;
 
                 //리프레쉬토큰을 값만 뽑기 위한 코드
                 const setCookieHeader = result.setCookieHeader;

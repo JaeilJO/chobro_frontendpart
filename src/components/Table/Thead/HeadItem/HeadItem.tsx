@@ -13,7 +13,7 @@ const TheadItem = ({ title, option }: TheadItemProps) => {
     const toggleOption = () => {
         setOptionOn(!optionOn);
     };
-    console.log(title);
+
     return (
         <StyledTHeadItem title={title}>
             <HeadItemText>{title}</HeadItemText>
