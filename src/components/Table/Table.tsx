@@ -1,4 +1,6 @@
 import { StyledTable } from './Table.styled';
+import Tbody from './Tbody/Tbody';
+import { TbodyMocks } from './Tbody/TbodyMocks';
 import Thead from './Thead/Thead';
 
 const Table = () => {
@@ -8,7 +10,9 @@ const Table = () => {
                 <Thead />
             </thead>
             <tbody>
-                <tr></tr>
+                {TbodyMocks.map((mock) => (
+                    <Tbody mock={mock} />
+                ))}
             </tbody>
         </StyledTable>
     );

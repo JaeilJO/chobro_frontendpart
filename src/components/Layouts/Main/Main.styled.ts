@@ -18,6 +18,7 @@ export const MainTitle = styled.div`
     color: ${({ theme: { colors } }) => colors.primary};
     font-size: ${({ theme: { fontSize } }) => fontSize.xl};
     transition: 320ms;
+    margin-left: 10px;
 
     @media screen and (max-width: 500px) {
         font-size: ${({ theme: { fontSize } }) => fontSize.lg};

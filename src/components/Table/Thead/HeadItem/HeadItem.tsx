@@ -13,8 +13,9 @@ const TheadItem = ({ title, option }: TheadItemProps) => {
     const toggleOption = () => {
         setOptionOn(!optionOn);
     };
+    console.log(title);
     return (
-        <StyledTHeadItem>
+        <StyledTHeadItem title={title}>
             <HeadItemText>{title}</HeadItemText>
 
             {option && (optionOn ? <OptionDown onClick={toggleOption} /> : <OptionUp onClick={toggleOption} />)}

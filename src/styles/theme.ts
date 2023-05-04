@@ -5,7 +5,7 @@ const colors = {
     second: '#4E9AD2',
     third: '#BEDAEF',
     black: '#2F2F2F',
-    gray: '#E2E2E2',
+    gray: '#F0F0F0',
     danger: '#FF8181',
     warning: '#FFBD3C',
     white: '#ffffff',

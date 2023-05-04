@@ -6,6 +6,9 @@ const roboto = Roboto({
 });
 
 const GlobalStyles = createGlobalStyle`
+html{
+  
+}
   *{
     margin: 0;
     padding: 0;
