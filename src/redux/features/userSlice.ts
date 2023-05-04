@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
 export interface UserState {
     token: string;
@@ -16,20 +17,26 @@ const initialState: UserState = {
 };
 
 interface PayloadValue {
-    token: string;
-    exp: number;
-    userName: string;
+    data: { token: string; exp: number; userName: string };
 }
 
 export const userSlice = createSlice({
     name: 'user',
     initialState,
+    extraReducers: {
+        [HYDRATE]: (state, action) => {
+            return {
+                ...state,
+                ...action.payload.user,
+            };
+        },
+    },
     reducers: {
-        setToken: (state, action: PayloadAction<PayloadValue>) => {
-            state.token = action.payload.token;
-            state.tokenExp = action.payload.exp;
-            state.userName = action.payload.userName;
-            state.isLoggedIn = true;
+        setToken: (state, action: PayloadAction<any>) => {
+            (state.token = action.payload.token),
+                (state.tokenExp = action.payload.exp),
+                (state.userName = action.payload.userName),
+                (state.isLoggedIn = true);
         },
     },
 });

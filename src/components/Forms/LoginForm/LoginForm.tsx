@@ -38,12 +38,11 @@ const LoginForm = () => {
     });
 
     const onSubmit: SubmitHandler<Inputs> = async (userInfo) => {
-        const res = await login(userInfo);
-        if ('data' in res) {
-            dispatch(setToken(res.data));
-        } else {
-            console.log('실패');
-        }
+        await login(userInfo)
+            .then((res) => {
+                dispatch(setToken(res));
+            })
+            .catch((err) => console.log(err));
     };
 
     return (

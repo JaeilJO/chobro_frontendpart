@@ -4,7 +4,7 @@ import { StyledAuthLink } from './AuthLink.styled';
 
 const AuthLink = () => {
     return (
-        <StyledAuthLink href={'#'}>
+        <StyledAuthLink href={'http://localhost:4000/auth/google'}>
             <AiOutlineGoogle />
             Continue with Google
         </StyledAuthLink>

@@ -3,15 +3,16 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import GlobalStyles from '../styles/GlobalStyle';
 import { Provider } from 'react-redux';
-import { store } from '../redux/store';
+import { wrapper } from '../redux/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
+    const { store, props } = wrapper.useWrappedStore(pageProps);
     return (
         <>
             <Provider store={store}>
                 <ThemeProvider theme={theme}>
                     <GlobalStyles />
-                    <Component {...pageProps} />
+                    <Component {...props.pageProps} />
                 </ThemeProvider>
             </Provider>
         </>
