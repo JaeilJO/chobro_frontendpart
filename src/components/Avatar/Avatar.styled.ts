@@ -6,8 +6,9 @@ export const AvatarBox = styled.div`
 
 export const StyledAvatar = styled.div`
     //size
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
+    padding: 2em;
 
     //color
     background-color: ${({ theme: { colors } }) => colors.primary};
@@ -23,7 +24,7 @@ export const StyledAvatar = styled.div`
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
 
     //border
-    border-radius: 50%;
+    border-radius: 5rem;
 
     //etc
     cursor: pointer;

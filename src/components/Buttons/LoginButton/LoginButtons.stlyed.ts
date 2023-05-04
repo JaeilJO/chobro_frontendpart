@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledLoginButton = styled.button`
     //size
-    width: 150px;
+    width: 15rem;
 
     //color
     background-color: ${({ theme: { colors } }) => colors.primary};
@@ -10,7 +10,7 @@ export const StyledLoginButton = styled.button`
 
     //border
     border: none;
-    border-radius: 10px;
+    border-radius: 1em;
 
     //font
     font-size: ${({ theme: { fontSize } }) => fontSize.md};

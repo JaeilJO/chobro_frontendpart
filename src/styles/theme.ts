@@ -12,10 +12,10 @@ const colors = {
 };
 
 const fontSize = {
-    xl: '38px',
-    lg: '24px',
-    md: '16px',
-    sm: '12px',
+    xl: '3rem',
+    lg: '2rem',
+    md: '1.5rem',
+    sm: '1rem',
 };
 
 const fontWeight = {

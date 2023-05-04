@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const StyledAuthForm = styled.form`
     //size
-    width: 350px;
-    height: 650px;
+    width: 35rem;
+    height: 65rem;
 
     //flex
     display: flex;
@@ -43,7 +43,7 @@ export const RecomendText = styled.div`
 
 export const RecomendTextButton = styled.button`
     //size
-    margin-left: 10px;
+    margin-left: 1em;
 
     //font
     font-size: ${({ theme: { fontSize } }) => fontSize.md};

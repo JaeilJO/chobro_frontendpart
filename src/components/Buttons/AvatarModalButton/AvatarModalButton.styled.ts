@@ -6,7 +6,7 @@ export const StyledAvatarModalButton = styled.button`
     height: 100%;
 
     //border
-    border-radius: 3px;
+    border-radius: 0.3em;
     border: none;
 
     //color

@@ -8,13 +8,13 @@ export const AuthInputContainer = styled.div`
 export const AuthLabel = styled.label<AuthLabelProps>`
     //position
     position: absolute;
-    left: 5px;
+    left: 0.5em;
 
     //Active Status
     ${({ theme: { fontSize, fontWeight, colors }, active }) => css`
         top: ${active ? `-15px` : `15px`};
-        font-size: ${active ? fontSize.sm : fontSize.md};
-        font-weight: ${active ? fontWeight.bold : fontWeight.medium};
+        font-size: ${active ? fontSize.md : fontSize.lg};
+        font-weight: ${active ? fontWeight.bold : fontWeight.light};
         color: ${active ? colors.primary : colors.gray};
     `}
 
@@ -32,8 +32,8 @@ export const AuthLabel = styled.label<AuthLabelProps>`
 export const StyledAuthInput = styled.input`
     //size
     width: 100%;
-    height: 50px;
-    padding: 5px 5px;
+    height: 5rem;
+    padding: 0.5em 0.5em;
 
     //border
     border: none;

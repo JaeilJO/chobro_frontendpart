@@ -7,7 +7,7 @@ const roboto = Roboto({
 
 const GlobalStyles = createGlobalStyle`
 html{
-  
+  font-size: 10px;
 }
   *{
     margin: 0;

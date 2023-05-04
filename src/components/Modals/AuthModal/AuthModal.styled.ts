@@ -26,8 +26,8 @@ export const StyledAuthModal = styled.div`
     z-index: 2;
 
     //size
-    width: 600px;
-    height: 900px;
+    width: 60rem;
+    height: 90rem;
 
     //flex
     display: flex;
@@ -35,7 +35,7 @@ export const StyledAuthModal = styled.div`
     align-items: center;
 
     //border
-    border-radius: 10px;
+    border-radius: 1em;
 
     //color
     background-color: white;
@@ -43,10 +43,11 @@ export const StyledAuthModal = styled.div`
     //etc
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     overflow: hidden;
+    transition: 320ms;
 
     //Media Query
     @media screen and(max-width: 700px) {
-        width: 100%;
-        height: 400px;
+        width: 100vw;
+        height: 100vh;
     }
 `;

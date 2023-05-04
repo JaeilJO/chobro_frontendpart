@@ -3,14 +3,14 @@ import { StyledAuthButtonProps } from './AuthButton.types';
 
 export const StyledAuthButton = styled.button<StyledAuthButtonProps>`
     //size
-    height: 70px;
+    height: 7rem;
 
     //font
     font-size: ${({ theme: { fontSize } }) => fontSize.lg};
 
     //border
     border: none;
-    border-radius: 10px;
+    border-radius: 1em;
 
     //color
     background-color: ${({ theme: { colors }, backgroundColor }) => colors[backgroundColor]};

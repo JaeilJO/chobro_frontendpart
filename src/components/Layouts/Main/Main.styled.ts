@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledMain = styled.main`
-    max-width: 1200px;
+    max-width: 120rem;
     margin: auto;
     position: relative;
 
@@ -11,17 +11,21 @@ export const StyledMain = styled.main`
     flex-direction: column;
 
     min-height: 100%;
+    @media screen and (max-width: 1200px) {
+        margin: 0 1em;
+    }
 `;
 
 export const MainTitle = styled.div`
-    margin-top: 150px;
+    margin-top: 15rem;
     color: ${({ theme: { colors } }) => colors.primary};
     font-size: ${({ theme: { fontSize } }) => fontSize.xl};
     transition: 320ms;
-    margin-left: 10px;
+    margin-left: 1rem;
 
     @media screen and (max-width: 500px) {
-        font-size: ${({ theme: { fontSize } }) => fontSize.lg};
+        margin-left: 0;
+        font-size: ${({ theme: { fontSize } }) => fontSize.xl};
         text-align: center;
     }
 `;

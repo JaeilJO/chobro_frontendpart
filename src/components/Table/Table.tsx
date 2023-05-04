@@ -11,7 +11,7 @@ const Table = () => {
             </thead>
             <tbody>
                 {TbodyMocks.map((mock) => (
-                    <Tbody mock={mock} />
+                    <Tbody data={mock} />
                 ))}
             </tbody>
         </StyledTable>

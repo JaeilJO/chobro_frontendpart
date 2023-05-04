@@ -8,11 +8,11 @@ export interface NavigationLinkStyledProps {
 export const NavigationLinkStyled = styled(Link)<NavigationLinkStyledProps>`
     display: flex;
     align-items: center;
-    font-size: ${({ theme: { fontSize } }) => fontSize.md};
+    font-size: ${({ theme: { fontSize } }) => fontSize.lg};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
     text-decoration: none;
     color: ${({ theme: { colors }, active }) => (active ? colors.primary : colors.gray)};
-    width: 100px;
+    width: 10rem;
 
     justify-content: center;
 
@@ -21,7 +21,7 @@ export const NavigationLinkStyled = styled(Link)<NavigationLinkStyledProps>`
         content: '';
         position: absolute;
         width: ${({ active }) => (active ? `100%` : `0%`)};
-        height: 3px;
+        height: 0.2em;
         background-color: ${({ theme: { colors } }) => colors.primary};
         bottom: 0;
         left: 0;
