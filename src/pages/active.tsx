@@ -7,11 +7,6 @@ import { setToken } from '../redux/features/userSlice';
 import { authApi, useRefreshQuery } from '../redux/services/authApi';
 import { useAppDispatch } from '../redux/hooks';
 
-interface JsonWebTokenDecode {
-    username: string;
-    exp: number;
-}
-
 const Active = () => {
     return (
         <>
@@ -20,13 +15,6 @@ const Active = () => {
         </>
     );
 };
-
-interface JwtDecodeType {
-    username: string;
-    user_id: string;
-    iat: number;
-    exp: number;
-}
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
     const cookie = context.req.cookies;
@@ -45,7 +33,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
         };
     }
 
-    const { data } = await store.dispatch(authApi.endpoints.refresh.initiate(cookie.rt));
+    const { data, isLoading } = await store.dispatch(authApi.endpoints.refresh.initiate(cookie.rt));
 
     await store.dispatch(setToken({ token: data.token, exp: data.exp, userName: data.userName }));
 

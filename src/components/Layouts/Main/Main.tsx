@@ -1,11 +1,14 @@
+import { useAppSelector } from '../../../redux/hooks';
 import Table from '../../Table/Table';
 import { MainTitle, StyledMain } from './Main.styled';
 
 const Main = () => {
+    const a = useAppSelector((state) => state.user.isLoggedIn);
+    console.log(a);
     return (
         <StyledMain>
             <MainTitle>Active access Certification</MainTitle>
-            <Table />
+            {a ? <Table /> : null}
         </StyledMain>
     );
 };

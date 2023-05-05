@@ -33,9 +33,9 @@ export const userSlice = createSlice({
     },
     reducers: {
         setToken: (state, action: PayloadAction<any>) => {
-            state.token = action.payload.token;
-            state.tokenExp = action.payload.exp;
-            state.userName = action.payload.userName;
+            state.token = action.payload.data.token;
+            state.tokenExp = action.payload.data.exp;
+            state.userName = action.payload.data.userName;
             state.isLoggedIn = true;
         },
     },

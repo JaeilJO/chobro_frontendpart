@@ -11,7 +11,7 @@ export const StyledTBodyItem = styled.td<StyledTBodyItemProps>`
     overflow: hidden;
     text-overflow: ellipsis;
 
-    padding-left: ${({ type }) => (type === 'is_active' ? `0` : `10px`)};
+    padding: ${({ type }) => (type === 'is_active' ? `0` : `0px 10px`)};
     padding: ${({ type }) => (type === 'is_active' ? `auto` : ``)};
 `;
 

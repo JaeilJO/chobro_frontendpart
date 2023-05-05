@@ -16,11 +16,11 @@ export interface DataType {
 const Thead = ({ data }: DataType) => {
     return (
         <StyledTbody>
-            <TbodyItem data={data.url} type={'url'} />
-            <TbodyItem data={data.certificate} type={'certificate'} />
-            <TbodyItem data={data.expiration_date} type={'expiration_date'} />
-            <TbodyItem data={data.is_active} sub_data={data.cert_id} type={'is_active'} />
-            <TbodyItem data={data.expiration_date} sub_data={data.created_at} type={'progress'} />
+            <TbodyItem data={data?.url} type={'url'} />
+            <TbodyItem data={data?.certificate} type={'certificate'} />
+            <TbodyItem data={data?.expiration_date} type={'expiration_date'} />
+            <TbodyItem data={data?.is_active} sub_data={data.cert_id} type={'is_active'} />
+            <TbodyItem data={data?.expiration_date} sub_data={data.created_at} type={'progress'} />
         </StyledTbody>
     );
 };

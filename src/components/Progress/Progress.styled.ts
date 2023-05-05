@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 export const TotalProgress = styled.div`
-    background-color: ${({ theme: { colors } }) => colors.gray};
+    background-color: #f4f4f4;
     width: 100%;
     height: 1rem;
     border-radius: 1em;
