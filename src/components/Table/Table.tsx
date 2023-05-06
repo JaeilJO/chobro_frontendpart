@@ -1,26 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAppSelector } from '../../redux/hooks';
-import { useGetCertQuery } from '../../redux/services/userApi';
+
 import { StyledTable } from './Table.styled';
 import Tbody from './Tbody/Tbody';
-import { TableMocks } from './TbodyMocks';
-import Thead from './Thead/Thead';
-import PageNation from '../PageNation/PageNation';
 
-interface DataTypes {
-    url: string;
-    certificate: string;
-    expiration_date: string;
-    is_active: string;
-    cert_id: string;
-    created_at: string;
-    updated_at: string;
-}
+import Thead from './Thead/Thead';
+
+import TableActiveModal from '../Modals/TableActiveModal/TableActiveModal';
+import { DataTypes } from './Table.types';
+import Pagination from '../Pagination/Pagination';
+import { useGetCertQuery } from '../../redux/services/userApi';
 
 const paginateData = (data: DataTypes[], NumberOfPageContent: number) => {
     let pages = [];
 
-    for (let i = 0; i < data.length; i += NumberOfPageContent) {
+    for (let i = 0; i < data?.length; i += NumberOfPageContent) {
         pages.push(data.slice(i, i + NumberOfPageContent));
     }
 
@@ -28,18 +22,21 @@ const paginateData = (data: DataTypes[], NumberOfPageContent: number) => {
 };
 
 const Table = () => {
+    //Modal Toggle
+    const tableActiveModal = useAppSelector((state) => state.modalStatus.tableActiveModal);
     const [currentTalbe, setCurrentTable] = useState(1);
+
+    //한페이지당 볼 수 있는 최대 contents
     const NumberOfPageContent = 10;
 
-    // const accessToken = useAppSelector((state) => state.user.token);
+    //Page정보 가져올 수 있게 AccessToken 가져오기
+    const accessToken: string = useAppSelector((state) => state.user.token);
+    console.log('access====', accessToken);
 
-    // const { data, isLoading } = useGetCertQuery(accessToken);
+    const { data } = useGetCertQuery({ accessToken }, { skip: !accessToken });
+    console.log('data', data);
 
-    // if (isLoading) {
-    //     return <>{isLoading}</>;
-    // }
-
-    const { pages } = paginateData(TableMocks, NumberOfPageContent);
+    const { pages } = paginateData(data, NumberOfPageContent);
 
     return (
         <>
@@ -53,7 +50,7 @@ const Table = () => {
                         return (
                             <tbody>
                                 {table.map((content) => (
-                                    <Tbody data={content} />
+                                    <Tbody data={content} key={content.cert_id} />
                                 ))}
                             </tbody>
                         );
@@ -62,7 +59,8 @@ const Table = () => {
                     }
                 })}
             </StyledTable>
-            <PageNation dataTotalCount={pages.length} currentTalbe={currentTalbe} setCurrentTable={setCurrentTable} />
+            <Pagination dataTotalCount={pages.length} currentTalbe={currentTalbe} setCurrentTable={setCurrentTable} />
+            {tableActiveModal.toggle_status ? <TableActiveModal /> : <></>}
         </>
     );
 };

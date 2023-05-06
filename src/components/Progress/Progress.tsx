@@ -2,25 +2,25 @@ import { useEffect, useState } from 'react';
 import { CurrentProgress, TotalProgress } from './Progress.styled';
 
 interface PrograssProps {
-    persent: number;
+    percent: number;
 }
 
-const Progress = ({ persent }: PrograssProps) => {
-    const [persentStatus, setPersentStatus] = useState('safe');
+const Progress = ({ percent }: PrograssProps) => {
+    const [percentStatus, setPercentStatus] = useState('safe');
 
     useEffect(() => {
-        if (persent <= 30) {
-            setPersentStatus('safe');
-        } else if (persent <= 70) {
-            setPersentStatus('warn');
+        if (percent <= 30) {
+            setPercentStatus('safe');
+        } else if (percent <= 70) {
+            setPercentStatus('warn');
         } else {
-            setPersentStatus('danger');
+            setPercentStatus('danger');
         }
-    }, [persentStatus]);
+    }, [percentStatus]);
 
     return (
         <TotalProgress>
-            <CurrentProgress persentStatus={persentStatus} persent={persent} />
+            <CurrentProgress percentStatus={percentStatus} percent={percent} />
         </TotalProgress>
     );
 };

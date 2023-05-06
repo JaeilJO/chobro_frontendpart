@@ -76,7 +76,6 @@ export const authApi = createApi({
                 },
             }),
             transformResponse: async (result: ResultData) => {
-                console.log(result);
                 //jrwt 디코드해서 필요한 값 뽑기
                 const jwtString = result.jwtString;
 

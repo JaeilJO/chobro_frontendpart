@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction, useCallback } from 'react';
-import { StyledPageNation } from './PageNation.styled';
-import PageNationButton from '../Buttons/PageNationButton/PageNationButton';
+import { StyledPagination } from './Pagination.styled';
+import PaginationButton from '../Buttons/PaginationButton/PageNationButton';
 
-interface PageNationProps {
+interface PaginationProps {
     setCurrentTable: Dispatch<SetStateAction<number>>;
     currentTalbe: number;
     dataTotalCount: number;
 }
 
-const PageNation = ({ setCurrentTable, currentTalbe, dataTotalCount }: PageNationProps) => {
+const Pagination = ({ setCurrentTable, currentTalbe, dataTotalCount }: PaginationProps) => {
     const nextPageHandler = useCallback(() => {
         setCurrentTable((preventState) => preventState + 1);
     }, [currentTalbe]);
@@ -17,9 +17,13 @@ const PageNation = ({ setCurrentTable, currentTalbe, dataTotalCount }: PageNatio
         setCurrentTable((preventState) => preventState - 1);
     }, [currentTalbe]);
 
+    //데이터가 하나도 없는 경우
+    if (dataTotalCount === 0) {
+        dataTotalCount = 1;
+    }
     return (
-        <StyledPageNation>
-            <PageNationButton
+        <StyledPagination>
+            <PaginationButton
                 type={'prev'}
                 onClick={prevPageHandler}
                 currentTalbe={currentTalbe}
@@ -28,14 +32,14 @@ const PageNation = ({ setCurrentTable, currentTalbe, dataTotalCount }: PageNatio
             <div>
                 {currentTalbe} of {dataTotalCount} pages
             </div>
-            <PageNationButton
+            <PaginationButton
                 type={'next'}
                 onClick={nextPageHandler}
                 currentTalbe={currentTalbe}
                 dataTotalCount={dataTotalCount}
             />
-        </StyledPageNation>
+        </StyledPagination>
     );
 };
 
-export default PageNation;
+export default Pagination;

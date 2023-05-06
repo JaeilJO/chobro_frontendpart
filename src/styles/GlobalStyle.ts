@@ -1,11 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 import { Roboto } from 'next/font/google';
+
 const roboto = Roboto({
     weight: ['300', '500', '700'],
     subsets: ['cyrillic'],
 });
 
 const GlobalStyles = createGlobalStyle`
+
 html{
   font-size: 10px;
 }

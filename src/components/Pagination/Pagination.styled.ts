@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledPageNation = styled.div`
+export const StyledPagination = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;

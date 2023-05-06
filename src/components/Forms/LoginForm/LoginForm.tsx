@@ -11,7 +11,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 // Redux
 import { useLoginMutation } from '../../../redux/services/authApi';
-import { useAppDispatch } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setToken } from '../../../redux/features/userSlice';
 import { changeMode } from '../../../redux/features/modalStatusSlice';
 
@@ -20,6 +20,7 @@ import { inputItems } from './LoginFormInputItems';
 
 // Types
 import { Inputs } from './LoginForm.types';
+import { useGetCertQuery } from '../../../redux/services/userApi';
 
 const LoginForm = () => {
     //for redux
@@ -39,8 +40,8 @@ const LoginForm = () => {
 
     const onSubmit: SubmitHandler<Inputs> = async (userInfo) => {
         await login(userInfo)
-            .then((res) => {
-                dispatch(setToken(res));
+            .then(async (res) => {
+                await dispatch(setToken(res));
             })
             .catch((err) => console.log(err));
     };

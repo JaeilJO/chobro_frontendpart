@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
-import { NextButton, PrevButton, StyledPageNationButton } from './PageNationButton.styled';
 import { AiOutlineCaretRight, AiOutlineCaretLeft } from 'react-icons/ai';
+import { NextButton, PrevButton } from './PageNationButton.styled';
 
-interface PageNationButtonProps {
+interface PaginationButtonProps {
     onClick: () => void;
     type: 'prev' | 'next';
     currentTalbe: number;
     dataTotalCount: number;
 }
 
-const PageNationButton = ({ type, onClick, currentTalbe, dataTotalCount }: PageNationButtonProps) => {
+const PaginationButton = ({ type, onClick, currentTalbe, dataTotalCount }: PaginationButtonProps) => {
     if (type === 'next') {
         return (
             <NextButton onClick={onClick} currentTable={currentTalbe} dataTotalCount={dataTotalCount}>
@@ -28,4 +27,4 @@ const PageNationButton = ({ type, onClick, currentTalbe, dataTotalCount }: PageN
     return null;
 };
 
-export default PageNationButton;
+export default PaginationButton;

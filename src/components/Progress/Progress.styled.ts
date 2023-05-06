@@ -8,27 +8,27 @@ export const TotalProgress = styled.div`
 `;
 
 interface CurrentProgressProps {
-    persentStatus: string;
-    persent: number;
+    percentStatus: string;
+    percent: number;
 }
-const progressMove = (persent: number) => keyframes`
+const progressMove = (percent: number) => keyframes`
 	0%{
     	width: 0;
     }
      
     100%{
-    	width: ${persent}%;
+    	width: ${percent}%;
     }
 `;
 
 export const CurrentProgress = styled.div<CurrentProgressProps>`
-    background-color: ${({ theme: { colors }, persentStatus }) =>
-        persentStatus === 'safe' ? colors.second : persentStatus === 'warn' ? colors.warning : colors.danger};
+    background-color: ${({ theme: { colors }, percentStatus }) =>
+        percentStatus === 'safe' ? colors.second : percentStatus === 'warn' ? colors.warning : colors.danger};
     transition: 320ms;
-    width: ${({ persent }) => `${persent}%`};
+    width: ${({ percent }) => `${percent}%`};
     left: 0;
     position: relative;
     height: 100%;
     border-radius: 1em;
-    animation: ${({ persent }) => progressMove(persent)} 1s 1s;
+    animation: ${({ percent }) => progressMove(percent)} 1s 0s;
 `;

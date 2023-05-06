@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { HYDRATE } from 'next-redux-wrapper';
 
 interface User {
     username: string;
@@ -11,7 +12,8 @@ interface User {
 export const userApi = createApi({
     reducerPath: 'userApi',
     tagTypes: ['User'],
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/', credentials: 'include' }),
+
     endpoints: (builder) => ({
         signUp: builder.mutation({
             query: (body) => ({
@@ -25,7 +27,7 @@ export const userApi = createApi({
             query: (accessToken) => ({
                 url: `cert`,
                 headers: {
-                    Authorization: `Bearer ${accessToken}`,
+                    Authorization: `bearer ${accessToken}`,
                 },
             }),
         }),

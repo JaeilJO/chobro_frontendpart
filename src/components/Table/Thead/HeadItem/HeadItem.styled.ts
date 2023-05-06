@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const StyledTHeadItem = styled.th`
     border-bottom: 1px solid ${({ theme: { colors } }) => colors.gray};
     padding-left: ${({ title }) => (title === 'Active' ? `0` : `1em`)};
-
     text-align: ${({ title }) => (title === 'Active' ? `center` : `left`)};
 `;
 

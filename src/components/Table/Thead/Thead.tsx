@@ -1,4 +1,3 @@
-import { title } from 'process';
 import TheadItem from './HeadItem/HeadItem';
 import { StyledThead } from './Thead.styled';
 import { TheadItems } from './TheadItems';

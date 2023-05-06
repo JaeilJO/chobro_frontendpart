@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledPageNationButton = styled.button<StyledPageNationButtonProps>`
+export const StyledPaginationButton = styled.button<StyledPaginationButtonProps>`
     //size
     width: 2rem;
     height: 2rem;
@@ -20,18 +20,18 @@ export const StyledPageNationButton = styled.button<StyledPageNationButtonProps>
     cursor: pointer;
 `;
 
-interface StyledPageNationButtonProps {
+interface StyledPaginationButtonProps {
     currentTable: number;
     dataTotalCount?: number;
 }
 
-export const NextButton = styled(StyledPageNationButton)`
+export const NextButton = styled(StyledPaginationButton)`
     pointer-events: ${({ currentTable, dataTotalCount }) => (currentTable === dataTotalCount ? `none` : ``)};
     transition: 320ms;
     opacity: ${({ currentTable, dataTotalCount }) => (currentTable === dataTotalCount ? `0%` : ``)};
     width: ${({ currentTable, dataTotalCount }) => (currentTable === dataTotalCount ? `0%` : ``)};
 `;
-export const PrevButton = styled(StyledPageNationButton)`
+export const PrevButton = styled(StyledPaginationButton)`
     pointer-events: ${({ currentTable }) => (currentTable === 1 ? `none` : ``)};
     transition: 320ms;
     opacity: ${({ currentTable }) => (currentTable === 1 ? `0%` : ``)};
