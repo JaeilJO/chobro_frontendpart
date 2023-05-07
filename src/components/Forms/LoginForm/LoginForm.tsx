@@ -21,6 +21,7 @@ import { inputItems } from './LoginFormInputItems';
 // Types
 import { Inputs } from './LoginForm.types';
 import { useGetCertQuery } from '../../../redux/services/userApi';
+import { isLoggedIn } from './utils';
 
 const LoginForm = () => {
     //for redux
@@ -38,9 +39,14 @@ const LoginForm = () => {
         },
     });
 
+   
+    const loginState = useAppSelector(state => state.user.isLoggedIn)
+  
     const onSubmit: SubmitHandler<Inputs> = async (userInfo) => {
         await login(userInfo)
             .then(async (res) => {
+                isLoggedIn(loginState)
+                console.log(res)
                 await dispatch(setToken(res));
             })
             .catch((err) => console.log(err));

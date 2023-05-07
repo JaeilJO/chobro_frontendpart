@@ -14,8 +14,8 @@ const AvatarModal = ({ modal }: AvatarModalProps) => {
     return (
         <StyledAvatarModal modal={modal}>
             {avatarModalItems.map((item) => (
-                <AvatarModalItem>
-                    <AvatarModalButton key={item.title} title={item.title} onClick={item.onClick} />
+                <AvatarModalItem key={item.title}>
+                    <AvatarModalButton  title={item.title} onClick={item.onClick} />
                 </AvatarModalItem>
             ))}
         </StyledAvatarModal>

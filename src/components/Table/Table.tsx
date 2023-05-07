@@ -31,10 +31,10 @@ const Table = () => {
 
     //Page정보 가져올 수 있게 AccessToken 가져오기
     const accessToken: string = useAppSelector((state) => state.user.token);
-    console.log('access====', accessToken);
+    
 
     const { data } = useGetCertQuery({ accessToken }, { skip: !accessToken });
-    console.log('data', data);
+    
 
     const { pages } = paginateData(data, NumberOfPageContent);
 

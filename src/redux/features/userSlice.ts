@@ -54,7 +54,6 @@ export const userSlice = createSlice({
     },
     reducers: {
         setToken: (state, action: PayloadAction<any>) => {
-            console.log('action.payLoad==', action.payload);
             state.token = action.payload.data.token;
             state.tokenExp = action.payload.data.exp;
             state.userName = action.payload.data.userName;
@@ -71,10 +70,16 @@ export const userSlice = createSlice({
                 updated_at: action.payload.updated_at,
             });
         },
+        logout: (state) =>{
+            state.token = '',
+            state.tokenExp = 0,
+            state.userName =''
+            state.isLoggedIn = false
+        }
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { setToken } = userSlice.actions;
+export const { setToken,logout } = userSlice.actions;
 
 export default userSlice.reducer;

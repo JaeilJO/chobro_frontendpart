@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { HYDRATE } from 'next-redux-wrapper';
 import jwt from 'jsonwebtoken';
+import { decodeJwt, isAccessTokenValid } from './utils/AuthFunction';
 
 interface DecodedUserDataType {
     username: string;
@@ -10,11 +11,11 @@ interface DecodedUserDataType {
 }
 
 interface LoginResultType {
-    access_token: string;
+    accessToken: string;
 }
 
 interface ResultData {
-    jwtString: string;
+    accessToken: string;
     setCookieHeader: string;
 }
 
@@ -31,6 +32,7 @@ export const authApi = createApi({
         }
     },
     endpoints: (builder) => ({
+        //endPoint: /login
         login: builder.mutation({
             query: (body) => ({
                 url: `login`,
@@ -38,21 +40,22 @@ export const authApi = createApi({
                 body,
             }),
             transformResponse: async (result: LoginResultType) => {
-                const token: string = result.access_token;
-
-                if (!token) {
-                    throw new Error('Token not found in the result');
-                }
-
-                const decodedUserData = jwt.decode(token) as DecodedUserDataType;
-
-                const transRes = {
-                    token: token,
-                    userName: decodedUserData.username,
-                    exp: decodedUserData.exp,
-                };
-                return transRes;
+                //Token 가져오기
+                const token: string = result.accessToken;
+                //Token 존재 여부
+               isAccessTokenValid(token)
+               //Token Decode
+                return decodeJwt(token)
             },
+        }),
+
+        logout: builder.query({
+            query: (refreshToken) => ({
+                url: `logout`,
+                headers: {
+                    Authorization: `Bearer ${refreshToken}`,
+                }}),
+
         }),
 
         //endPoint : /refresh
@@ -64,23 +67,24 @@ export const authApi = createApi({
                 },
 
                 responseHandler: async (response) => {
-                    const jwtString = await response.text();
+                    const accessToken= await response.json().then((data)=> (data.accessToken))
                     const setCookieHeader = response.headers.get('set-cookie');
                     if (setCookieHeader === null) {
                         throw new Error("don't have a refreshToken");
                     }
                     return {
-                        jwtString,
+                        accessToken: accessToken,
                         setCookieHeader,
                     };
                 },
             }),
             transformResponse: async (result: ResultData) => {
-                //jrwt 디코드해서 필요한 값 뽑기
-                const jwtString = result.jwtString;
-
+                
+                //jwt 디코드해서 필요한 값 뽑기
+                const jwtString = result.accessToken;
+                console.log('jwtStirig==',jwtString)
                 const jwt_decoded = jwt.decode(jwtString) as DecodedUserDataType;
-
+                
                 //리프레쉬토큰을 값만 뽑기 위한 코드
                 const setCookieHeader = result.setCookieHeader;
                 const nameValuePattern = /^\s*([^=]+)=([^;]+)/;
@@ -100,12 +104,13 @@ export const authApi = createApi({
                     if (!transRes) {
                         throw new Error('Token not found');
                     }
-
+                    
                     return transRes;
                 }
             },
+            
         }),
     }),
 });
 
-export const { useLoginMutation, useRefreshQuery } = authApi;
+export const { useLoginMutation, useLogoutQuery,useRefreshQuery } = authApi;
