@@ -6,10 +6,9 @@ export const AvatarBox = styled.div`
 
 export const StyledAvatar = styled.div`
     //size
-    width: 5rem;
-    height: 5rem;
-    padding: 2em;
-
+    width: 2rem;
+    height: 2rem;
+    padding: 1em;
     //color
     background-color: ${({ theme: { colors } }) => colors.primary};
     color: ${({ theme: { colors } }) => colors.white};
@@ -20,16 +19,17 @@ export const StyledAvatar = styled.div`
     align-items: center;
 
     // font
-    font-size: ${({ theme: { fontSize } }) => fontSize.md};
-    font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
+    font-size: ${({ theme: { fontSize } }) => fontSize.lg};
+    font-weight: ${({ theme: { fontWeight } }) => fontWeight.medium};
 
     //border
     border-radius: 5rem;
 
     //etc
     cursor: pointer;
+    transition: 320ms;
 
     :hover {
-        opacity: 90%;
+        opacity: 80%;
     }
 `;

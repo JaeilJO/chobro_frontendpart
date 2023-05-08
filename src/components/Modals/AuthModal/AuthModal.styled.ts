@@ -36,12 +36,13 @@ export const StyledAuthModal = styled.div`
 
     //border
     border-radius: 1em;
+    border: 2px solid ${({ theme: { colors } }) => colors.gray};
 
     //color
     background-color: white;
 
     //etc
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
     overflow: hidden;
     transition: 320ms;
 

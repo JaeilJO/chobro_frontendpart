@@ -23,6 +23,7 @@ export const userApi = createApi({
             }),
         }),
 
+        //endpoint : /cert
         getCert: builder.query({
             query: (accessToken) => ({
                 url: `cert`,

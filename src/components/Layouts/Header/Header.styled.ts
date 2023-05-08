@@ -3,27 +3,24 @@ import styled from 'styled-components';
 export const StyledHeader = styled.header`
     //size
     width: 100vw;
-    height: 100px;
+    height: 80px;
 
-    //etc
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    justify-content: center;
+
+    border-bottom: 1px solid ${({ theme: { colors } }) => colors.gray};
 `;
 
 export const HeaderContents = styled.div`
     //size
-    width: 120rem;
+    width: 1200px;
     height: 100%;
-    margin: auto;
-    padding: 2em 0;
+    padding: 0 1rem;
 
     //flex
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     //Media Query
-    @media screen and (max-width: 1200px) {
-        width: 100vw;
-        margin: 0;
-        padding: 2em 1em;
-    }
 `;

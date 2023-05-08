@@ -5,7 +5,7 @@ export const StyledAvatarModal = styled.ul<AvatarModalProps>`
     //position
     position: absolute;
     right: 0;
-    top: 60px;
+    top: 50px;
 
     //size
     width: 150px;
@@ -22,6 +22,10 @@ export const StyledAvatarModal = styled.ul<AvatarModalProps>`
         height: ${modal ? `` : `0px`};
         padding: ${modal ? `10px` : `0px`};
     `}
+
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
 
     //etc
     list-style-type: none;

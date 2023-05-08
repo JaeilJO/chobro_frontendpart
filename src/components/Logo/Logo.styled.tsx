@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const StyledLogo = styled(Link)`
     color: ${({ theme: { colors } }) => colors.primary};
-    font-size: ${({ theme: { fontSize } }) => fontSize.xl};
+    font-size: 5rem;
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
     display: flex;
     justify-content: center;

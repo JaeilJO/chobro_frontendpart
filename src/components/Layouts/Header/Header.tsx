@@ -9,6 +9,7 @@ import AuthModal from '../../Modals/AuthModal/AuthModal';
 //Style
 import { HeaderContents, StyledHeader } from './Header.styled';
 import { useAppSelector } from '../../../redux/hooks';
+import { Container, DeskTopColumn } from '../../../styles/gridSystem';
 
 const Header = () => {
     //for redux
@@ -25,7 +26,7 @@ const Header = () => {
                     {isLogin && <Navigation />}
 
                     {/* 로그인이 되지 못한사람은 Avatar를 볼 수 없게 하는 것 */}
-                    {isLogin ? <Avatar lastName="Jo" /> : <LoginButton />}
+                    {isLogin ? <Avatar /> : <LoginButton />}
                 </HeaderContents>
             </StyledHeader>
 

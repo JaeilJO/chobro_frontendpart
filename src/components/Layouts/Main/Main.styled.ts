@@ -19,7 +19,7 @@ export const StyledMain = styled.main`
 export const MainTitle = styled.div`
     margin-top: 15rem;
     color: ${({ theme: { colors } }) => colors.primary};
-    font-size: ${({ theme: { fontSize } }) => fontSize.xl};
+    font-size: ${({ theme: { fontSize } }) => fontSize.xxl};
     transition: 320ms;
     margin-left: 1rem;
 

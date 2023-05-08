@@ -6,6 +6,7 @@ import { StyledLoginButton } from './LoginButtons.stlyed';
 //Redux
 import { useAppDispatch } from '../../../redux/hooks';
 import { toggleHeaderLoginButtonModal } from '../../../redux/features/modalStatusSlice';
+import { DeskTopColumn } from '../../../styles/gridSystem';
 
 const LoginButton = () => {
     //for redux

@@ -1,4 +1,4 @@
-import { NavigationLinkStyled } from './Links.styled';
+import { NavigationLinkStyled } from './NavigationLink.styled';
 
 interface NavigationLinkProps {
     title: string;

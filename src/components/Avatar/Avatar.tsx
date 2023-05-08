@@ -13,7 +13,7 @@ import { AvatarPorps } from './Avatar.types';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { toggleHeaderAvatarModal } from '../../redux/features/modalStatusSlice';
 
-const Avatar = ({ lastName }: AvatarPorps) => {
+const Avatar = () => {
     //for redux
     const avatarModalStatus = useAppSelector((state) => state.modalStatus.headerAvatarModal);
     const dispatch = useAppDispatch();
@@ -23,9 +23,11 @@ const Avatar = ({ lastName }: AvatarPorps) => {
         dispatch(toggleHeaderAvatarModal());
     }, []);
 
+    const name = useAppSelector((state) => state.user.userName);
+
     return (
         <AvatarBox>
-            <StyledAvatar onClick={toggleAvatarModal}>{lastName}</StyledAvatar>
+            <StyledAvatar onClick={toggleAvatarModal}>{name[0]}</StyledAvatar>
             <AvatarModal modal={avatarModalStatus} />
         </AvatarBox>
     );

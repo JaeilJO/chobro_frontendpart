@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledLoginButton = styled.button`
     //size
     width: 15rem;
+    height: 70%;
 
     //color
     background-color: ${({ theme: { colors } }) => colors.primary};
@@ -18,6 +19,7 @@ export const StyledLoginButton = styled.button`
 
     //etc
     cursor: pointer;
+    transition: 320ms;
     :hover {
         opacity: 90%;
     }

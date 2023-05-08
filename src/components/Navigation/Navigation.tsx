@@ -1,4 +1,4 @@
-import NavigationLink from '../Links/NavigationLink';
+import NavigationLink from '../Links/NavigationLink/NavigationLink';
 
 import { useRouter } from 'next/router';
 import { StyledNavigation } from './Navigation.styled';
@@ -10,12 +10,7 @@ const Navigation = () => {
     return (
         <StyledNavigation>
             {navigationItems.map((item) => (
-                <NavigationLink
-                    key={item.title}
-                    title={item.title}
-                    href={item.href}
-                    pathName={pathName}
-                ></NavigationLink>
+                <NavigationLink key={item.title} title={item.title} href={item.href} pathName={pathName} />
             ))}
         </StyledNavigation>
     );

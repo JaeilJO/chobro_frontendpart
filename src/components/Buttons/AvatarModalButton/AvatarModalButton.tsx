@@ -8,31 +8,24 @@ import { StyledAvatarModalButton } from './AvatarModalButton.styled';
 //Types
 import { AvatarModalButtonProps } from './AvatarModalButton.types';
 
-
-
-
-
-
-
-
 const AvatarModalButton = ({ title }: AvatarModalButtonProps) => {
-    const [shouldFetch, setShouldFetch] = useState(false)
-    const dispatch = useAppDispatch()
-    const isLoggedIn = useAppSelector(state=>state.user.isLoggedIn)
-    const TokenExp = useAppSelector(state => state.user.exp)
-    const accessToken = useAppSelector(state=>state.user.token)
-    const {isSuccess,refetch} = useLogoutQuery(accessToken)
-    const logoutHandler = async() =>{
-        //기간이 얼마나 남았는가?
-        if(!shouldFetch){
-            setShouldFetch(true)
+    const [shouldFetch, setShouldFetch] = useState(false);
+    //redux
+    const dispatch = useAppDispatch();
+    const accessToken = useAppSelector((state) => state.user.token);
+    const { isSuccess, refetch } = useLogoutQuery(accessToken);
+
+    //logout
+    const logoutHandler = async () => {
+        if (!shouldFetch) {
+            setShouldFetch(true);
         }
-        await refetch()
-        if(isSuccess){
-            dispatch(logout())
+        await refetch();
+        if (isSuccess) {
+            dispatch(logout());
         }
-    }
-    console.log(accessToken)
+    };
+
     return <StyledAvatarModalButton onClick={logoutHandler}>{title}</StyledAvatarModalButton>;
 };
 

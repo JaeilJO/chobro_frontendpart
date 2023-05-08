@@ -12,6 +12,7 @@ const colors = {
 };
 
 const fontSize = {
+    xxl: '3.5rem',
     xl: '3rem',
     lg: '2rem',
     md: '1.5rem',

@@ -12,7 +12,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 // Redux
 import { useLoginMutation } from '../../../redux/services/authApi';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { setToken } from '../../../redux/features/userSlice';
+import { setUser } from '../../../redux/features/userSlice';
 import { changeMode } from '../../../redux/features/modalStatusSlice';
 
 // Datas
@@ -20,13 +20,12 @@ import { inputItems } from './LoginFormInputItems';
 
 // Types
 import { Inputs } from './LoginForm.types';
-import { useGetCertQuery } from '../../../redux/services/userApi';
-import { isLoggedIn } from './utils';
+import { HasEmptyFileds, HasSpacingInPassword, IsLoginStatusTrue } from '../../../utils/utils';
 
 const LoginForm = () => {
     //for redux
     const dispatch = useAppDispatch();
-    const [login] = useLoginMutation();
+    const [login, { data, error, isLoading }] = useLoginMutation();
     const changeModalMode = () => {
         dispatch(changeMode('signup'));
     };
@@ -39,17 +38,17 @@ const LoginForm = () => {
         },
     });
 
-   
-    const loginState = useAppSelector(state => state.user.isLoggedIn)
-  
+    const loginState = useAppSelector((state) => state.user.isLoggedIn);
     const onSubmit: SubmitHandler<Inputs> = async (userInfo) => {
-        await login(userInfo)
-            .then(async (res) => {
-                isLoggedIn(loginState)
-                console.log(res)
-                await dispatch(setToken(res));
-            })
-            .catch((err) => console.log(err));
+        try {
+            HasEmptyFileds(userInfo);
+            HasSpacingInPassword(userInfo);
+            IsLoginStatusTrue(loginState);
+            const data = await login(userInfo);
+            dispatch(setUser(data));
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (
@@ -69,7 +68,7 @@ const LoginForm = () => {
             ))}
 
             <AuthButton title="Login" backgorundColor={'primary'} color={'white'} />
-
+            <div>{isLoading}</div>
             <RecomendText>Or</RecomendText>
             <AuthLink></AuthLink>
             <RecomendText>

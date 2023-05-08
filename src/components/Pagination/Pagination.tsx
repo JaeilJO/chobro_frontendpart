@@ -21,6 +21,7 @@ const Pagination = ({ setCurrentTable, currentTalbe, dataTotalCount }: Paginatio
     if (dataTotalCount === 0) {
         dataTotalCount = 1;
     }
+
     return (
         <StyledPagination>
             <PaginationButton
