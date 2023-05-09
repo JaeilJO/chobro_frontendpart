@@ -13,7 +13,7 @@ import { Container, DeskTopColumn } from '../../../styles/gridSystem';
 
 const Header = () => {
     //for redux
-    const LoginButtonModalStatus = useAppSelector((state) => state.modalStatus.headerLoginButtonModal);
+    const LoginButtonModalStatus = useAppSelector((state) => state.modal.headerLoginButtonModal);
     const isLogin = useAppSelector((state) => state.user.isLoggedIn);
 
     return (

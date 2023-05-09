@@ -32,7 +32,33 @@ export const userApi = createApi({
                 },
             }),
         }),
+
+        patchCert: builder.mutation({
+            query: ({ cert_id, accessToken, is_active }) => ({
+                url: `cert/${cert_id}`,
+                method: 'PATCH',
+                headers: {
+                    Authorization: `bearer ${accessToken}`,
+                },
+                body: {
+                    is_active: is_active,
+                },
+            }),
+        }),
+
+        postCert: builder.mutation({
+            query: ({ url, accessToken }) => ({
+                url: `cert`,
+                method: 'POST',
+                headers: {
+                    Authorization: `bearer ${accessToken}`,
+                },
+                body: {
+                    url: url,
+                },
+            }),
+        }),
     }),
 });
 
-export const { useSignUpMutation, useGetCertQuery } = userApi;
+export const { useSignUpMutation, useGetCertQuery, usePatchCertMutation, usePostCertMutation } = userApi;

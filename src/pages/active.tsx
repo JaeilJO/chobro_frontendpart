@@ -6,12 +6,16 @@ import { authApi } from '../redux/services/authApi';
 
 import { setUser } from '../redux/features/userSlice';
 import { isCookieEmpty } from '../utils/utils';
+import TableActiveButtonModal from '../components/Modals/TableActiveButtonModal/TableActiveButtonModal';
+import { useAppSelector } from '../redux/hooks';
 
 const Active = () => {
+    const TableActiveButtonModalToggle = useAppSelector((state) => state.modal?.tableActiveModal.toggle_status);
     return (
         <>
             <Header />
             <Main />
+            {TableActiveButtonModalToggle ? <TableActiveButtonModal /> : <></>}
         </>
     );
 };

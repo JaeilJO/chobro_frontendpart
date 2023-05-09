@@ -8,7 +8,7 @@ import userReducer from './features/userSlice';
 import { MakeStore, createWrapper } from 'next-redux-wrapper';
 
 const reducers = {
-    modalStatus: modalStatusReducer,
+    modal: modalStatusReducer,
     user: userReducer,
 
     [userApi.reducerPath]: userApi.reducer,

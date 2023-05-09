@@ -11,17 +11,19 @@ import Pagination from './Pagination/Pagination';
 import { generateUniqueId, makePages } from '../../utils/utils';
 import { TableData } from './Table.types';
 import React from 'react';
+import { useAppSelector } from '../../redux/hooks';
+import { useGetCertQuery } from '../../redux/services/userApi';
 
 export const Table = () => {
     const [currentTable, setCurrentTable] = useState(1);
     const NumberOfPageContent = 10;
 
     //Page정보 가져올 수 있게 AccessToken 가져오기
-    // const accessToken: string = useAppSelector((state) => state.user.token);
+    const accessToken: string = useAppSelector((state) => state.user.token);
 
-    // const { data } = useGetCertQuery({ accessToken }, { skip: !accessToken });
+    const { data } = useGetCertQuery(accessToken, { skip: !accessToken });
 
-    const { pages } = makePages(TableMocks, NumberOfPageContent);
+    const { pages } = makePages(data, NumberOfPageContent);
 
     return (
         <>
@@ -53,6 +55,7 @@ export const Table = () => {
                                             expiration_date={content.expiration_date}
                                             is_active={content.is_active}
                                             created_at={content.created_at}
+                                            cert_id={content.cert_id}
                                         />
                                     ))}
                                 </React.Fragment>

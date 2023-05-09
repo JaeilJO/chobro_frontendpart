@@ -7,8 +7,9 @@ export interface modalState {
     authMode: 'login' | 'signup';
     tableActiveModal: {
         toggle_status: boolean;
-        mode: string;
+        is_active: boolean;
         url: string;
+        cert_id: string;
     };
 }
 
@@ -21,13 +22,14 @@ const initialState: modalState = {
 
     tableActiveModal: {
         toggle_status: false,
-        mode: '',
+        is_active: false,
         url: '',
+        cert_id: '',
     },
 };
 
 export const modalStatusSlice = createSlice({
-    name: 'modalStatus',
+    name: 'modal',
     initialState,
     reducers: {
         toggleHeaderLoginButtonModal: (state) => {
@@ -37,9 +39,10 @@ export const modalStatusSlice = createSlice({
             state.headerAvatarModal = !state.headerAvatarModal;
         },
         openToggleTableActiveModal: (state, action) => {
-            (state.tableActiveModal.mode = action.payload.mode),
-                (state.tableActiveModal.toggle_status = true),
-                (state.tableActiveModal.url = action.payload.url);
+            state.tableActiveModal.is_active = action.payload.is_active;
+            state.tableActiveModal.toggle_status = true;
+            state.tableActiveModal.url = action.payload.url;
+            state.tableActiveModal.cert_id = action.payload.cert_id;
         },
         closeToggleTableActiveModal: (state) => {
             state.tableActiveModal.toggle_status = false;

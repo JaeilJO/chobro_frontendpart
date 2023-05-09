@@ -15,7 +15,7 @@ import { toggleHeaderAvatarModal } from '../../redux/features/modalStatusSlice';
 
 const Avatar = () => {
     //for redux
-    const avatarModalStatus = useAppSelector((state) => state.modalStatus.headerAvatarModal);
+    const avatarModalStatus = useAppSelector((state) => state.modal.headerAvatarModal);
     const dispatch = useAppDispatch();
 
     //toggle onOff Modal
@@ -28,7 +28,7 @@ const Avatar = () => {
     return (
         <AvatarBox>
             <StyledAvatar onClick={toggleAvatarModal}>{name[0]}</StyledAvatar>
-            <AvatarModal modal={avatarModalStatus} />
+            <AvatarModal $modal={avatarModalStatus} />
         </AvatarBox>
     );
 };

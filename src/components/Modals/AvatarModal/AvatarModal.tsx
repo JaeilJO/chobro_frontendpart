@@ -9,7 +9,6 @@ import { avatarModalItems } from './AvatarModalItems';
 
 //Types
 import { AvatarModalProps } from './AvatarModal.types';
-import { generateUniqueId } from '../../../utils/utils';
 
 const AvatarModal = ({ $modal }: AvatarModalProps) => {
     return (
