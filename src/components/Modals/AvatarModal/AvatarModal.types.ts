@@ -1,8 +1,8 @@
 export interface avatarModalItemsType {
     title: string;
-    onClick: any;
+    id: number;
 }
 
 export interface AvatarModalProps {
-    modal: boolean;
+    $modal: boolean;
 }

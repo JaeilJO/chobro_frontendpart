@@ -18,8 +18,6 @@ const Active = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
     const cookie = context.req.cookies;
-    //쿠키가 존재하지 않으면 false
-    isCookieEmpty(cookie);
 
     //refresh와  디코딩된 token얻어오기
     const tokens = await store.dispatch(authApi.endpoints.refresh.initiate(cookie.rt));
@@ -31,9 +29,9 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async (c
     const refreshToken = tokens.data?.refreshToken;
     const userData = {
         data: {
-            userName: tokens.data?.userData.username,
+            userName: tokens.data?.userData.userName,
             exp: tokens.data?.userData.exp,
-            token: tokens.data?.accessToken,
+            token: tokens.data?.userData.token,
         },
     };
 

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { HYDRATE } from 'next-redux-wrapper';
 import jwt from 'jsonwebtoken';
-import { isAccessTokenValid, decodeJwt, checkRefreshToken, jwtDecode, getRefreshTokenValue } from '../../utils/utils';
+import { decodeJwt, checkRefreshToken, getRefreshTokenValue } from '../../utils/utils';
 
 interface LoginResultType {
     accessToken: string;
@@ -35,8 +35,6 @@ export const authApi = createApi({
             transformResponse: async (result: LoginResultType) => {
                 const token: string = result.accessToken;
 
-                isAccessTokenValid(token);
-
                 return decodeJwt(token);
             },
         }),
@@ -68,16 +66,17 @@ export const authApi = createApi({
                     };
                 },
             }),
+
             transformResponse: async (result: ResultData) => {
-                const decodedAccessToken = jwtDecode(result.accessToken);
+                const decodedAccessToken = decodeJwt(result.accessToken);
 
                 const refreshTokenValue = getRefreshTokenValue(result.refreshToken);
 
                 const returnValue = {
                     userData: decodedAccessToken,
-                    accessToken: result.accessToken,
                     refreshToken: refreshTokenValue,
                 };
+
                 return returnValue;
             },
         }),

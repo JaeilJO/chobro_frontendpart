@@ -9,7 +9,7 @@ interface NavigationLinkProps {
 const NavigationLink = ({ title, href, pathName }: NavigationLinkProps) => {
     let active = pathName === href ? true : false;
     return (
-        <NavigationLinkStyled href={href} active={active}>
+        <NavigationLinkStyled href={href} $active={active}>
             {title}
         </NavigationLinkStyled>
     );

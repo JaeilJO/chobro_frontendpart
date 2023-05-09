@@ -9,14 +9,13 @@ import { avatarModalItems } from './AvatarModalItems';
 
 //Types
 import { AvatarModalProps } from './AvatarModal.types';
+import { generateUniqueId } from '../../../utils/utils';
 
-const AvatarModal = ({ modal }: AvatarModalProps) => {
+const AvatarModal = ({ $modal }: AvatarModalProps) => {
     return (
-        <StyledAvatarModal modal={modal}>
+        <StyledAvatarModal $modal={$modal}>
             {avatarModalItems.map((item) => (
-                <>
-                    <AvatarModalButton title={item.title} onClick={item.onClick} />
-                </>
+                <AvatarModalButton key={item.id} title={item.title} />
             ))}
         </StyledAvatarModal>
     );

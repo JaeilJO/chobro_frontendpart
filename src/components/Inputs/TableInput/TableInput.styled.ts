@@ -7,4 +7,7 @@ export const TableTextInput = styled.input`
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.light};
     padding: 1rem 0;
     border: none;
+    :focus {
+        outline: none;
+    }
 `;

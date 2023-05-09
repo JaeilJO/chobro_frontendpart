@@ -6,30 +6,13 @@ import { StyledTableBodyFormRow } from './TableBodyFormRow.styled';
 const TableBodyFormRow = () => {
     return (
         <StyledTableBodyFormRow>
-            {/* // */}
-
-            <StyledTableBodyItem textAlign="center">
+            <StyledTableBodyItem textAlign="center" colSpan={4}>
                 <TableTextInput placeholder="URL" />
-            </StyledTableBodyItem>
-
-            <StyledTableBodyItem textAlign="center">
-                <TableTextInput placeholder="Certificate" />
-            </StyledTableBodyItem>
-
-            <StyledTableBodyItem textAlign="center">
-                <input type="date"></input>
-            </StyledTableBodyItem>
-
-            <StyledTableBodyItem textAlign="center">
-                <input type="radio" name="active" value={'Acitve'} />
-                <input type="radio" name="active" value={'Inactive'} />
             </StyledTableBodyItem>
 
             <StyledTableBodyItem textAlign="center">
                 <TableSubmitButton>Submit</TableSubmitButton>
             </StyledTableBodyItem>
-
-            {/* // */}
         </StyledTableBodyFormRow>
     );
 };

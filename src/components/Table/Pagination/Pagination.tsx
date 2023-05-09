@@ -1,25 +1,25 @@
 import { Dispatch, SetStateAction, useCallback } from 'react';
 import { StyledPagination } from './Pagination.styled';
-import PaginationButton from '../Buttons/PaginationButton/PageNationButton';
+import PaginationButton from '../../Buttons/PaginationButton/PageNationButton';
 
 interface PaginationProps {
     setCurrentTable: Dispatch<SetStateAction<number>>;
-    currentTalbe: number;
-    dataTotalCount: number;
+    currentTable: number;
+    pageCount: number;
 }
 
-const Pagination = ({ setCurrentTable, currentTalbe, dataTotalCount }: PaginationProps) => {
+const Pagination = ({ setCurrentTable, currentTable, pageCount }: PaginationProps) => {
     const nextPageHandler = useCallback(() => {
         setCurrentTable((preventState) => preventState + 1);
-    }, [currentTalbe]);
+    }, [currentTable]);
 
     const prevPageHandler = useCallback(() => {
         setCurrentTable((preventState) => preventState - 1);
-    }, [currentTalbe]);
+    }, [currentTable]);
 
     //데이터가 하나도 없는 경우
-    if (dataTotalCount === 0) {
-        dataTotalCount = 1;
+    if (pageCount === 0) {
+        pageCount = 1;
     }
 
     return (
@@ -27,17 +27,17 @@ const Pagination = ({ setCurrentTable, currentTalbe, dataTotalCount }: Paginatio
             <PaginationButton
                 type={'prev'}
                 onClick={prevPageHandler}
-                currentTalbe={currentTalbe}
-                dataTotalCount={dataTotalCount}
+                currentTable={currentTable}
+                pageCount={pageCount}
             />
             <div>
-                {currentTalbe} of {dataTotalCount} pages
+                {currentTable} of {pageCount} pages
             </div>
             <PaginationButton
                 type={'next'}
                 onClick={nextPageHandler}
-                currentTalbe={currentTalbe}
-                dataTotalCount={dataTotalCount}
+                currentTable={currentTable}
+                pageCount={pageCount}
             />
         </StyledPagination>
     );

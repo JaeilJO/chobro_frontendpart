@@ -4,14 +4,14 @@ import { NextButton, PrevButton } from './PageNationButton.styled';
 interface PaginationButtonProps {
     onClick: () => void;
     type: 'prev' | 'next';
-    currentTalbe: number;
-    dataTotalCount: number;
+    currentTable: number;
+    pageCount: number;
 }
 
-const PaginationButton = ({ type, onClick, currentTalbe, dataTotalCount }: PaginationButtonProps) => {
+const PaginationButton = ({ type, onClick, currentTable, pageCount }: PaginationButtonProps) => {
     if (type === 'next') {
         return (
-            <NextButton onClick={onClick} currentTable={currentTalbe} dataTotalCount={dataTotalCount}>
+            <NextButton onClick={onClick} currentTable={currentTable} dataTotalCount={pageCount}>
                 <AiOutlineCaretRight />
             </NextButton>
         );
@@ -19,7 +19,7 @@ const PaginationButton = ({ type, onClick, currentTalbe, dataTotalCount }: Pagin
 
     if (type === 'prev') {
         return (
-            <PrevButton onClick={onClick} currentTable={currentTalbe}>
+            <PrevButton onClick={onClick} currentTable={currentTable}>
                 <AiOutlineCaretLeft />
             </PrevButton>
         );

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 export interface NavigationLinkStyledProps {
-    active: boolean;
+    $active: boolean;
 }
 
 export const NavigationLinkStyled = styled(Link)<NavigationLinkStyledProps>`
@@ -11,7 +11,7 @@ export const NavigationLinkStyled = styled(Link)<NavigationLinkStyledProps>`
     font-size: ${({ theme: { fontSize } }) => fontSize.lg};
     font-weight: ${({ theme: { fontWeight } }) => fontWeight.bold};
     text-decoration: none;
-    color: ${({ theme: { colors }, active }) => (active ? colors.primary : colors.gray)};
+    color: ${({ theme: { colors }, $active }) => ($active ? colors.primary : colors.gray)};
     width: 10rem;
     transition: 280ms;
 
@@ -21,6 +21,6 @@ export const NavigationLinkStyled = styled(Link)<NavigationLinkStyledProps>`
 
     :hover {
         color: ${({ theme: { colors } }) => colors.primary};
-        opacity: ${({ active }) => (active ? '80%' : '100%')};
+        opacity: ${({ $active }) => ($active ? '80%' : '100%')};
     }
 `;

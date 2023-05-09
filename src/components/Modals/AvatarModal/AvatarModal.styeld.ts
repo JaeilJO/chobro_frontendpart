@@ -17,10 +17,10 @@ export const StyledAvatarModal = styled.ul<AvatarModalProps>`
     background-color: white;
 
     //for modal
-    ${({ modal }) => css`
-        opacity: ${modal ? `100%` : `0%`};
-        height: ${modal ? `` : `0px`};
-        padding: ${modal ? `10px` : `0px`};
+    ${({ $modal }) => css`
+        opacity: ${$modal ? `100%` : `0%`};
+        height: ${$modal ? `` : `0px`};
+        padding: ${$modal ? `10px` : `0px`};
     `}
 
     display:flex;
