@@ -2,7 +2,7 @@
 import { AvatarModalItem, StyledAvatarModal } from './AvatarModal.styeld';
 
 //Conponent
-import AvatarModalButton from '../../Buttons/AvatarModalButton/AvatarModalButton';
+import AvatarModalButton from '../../Avatar/AvatarModalButton/AvatarModalButton';
 
 //Datas
 import { avatarModalItems } from './AvatarModalItems';

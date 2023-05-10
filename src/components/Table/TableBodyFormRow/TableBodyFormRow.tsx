@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 import { useAppSelector } from '../../../redux/hooks';
 import { usePostCertMutation } from '../../../redux/services/userApi';
-import { TableSubmitButton } from '../../Buttons/TableSubmitButton/TableSubmitButton.styled';
-import { TableTextInput } from '../../Inputs/TableInput/TableInput.styled';
+import { TableSubmitButton } from '../TableSubmitButton/TableSubmitButton.styled';
+import { TableTextInput } from '../TableInput/TableInput.styled';
 import { StyledTableBodyItem } from '../TableBodyItem/TableBodyItem.styled';
 import { StyledTableBodyFormRow } from './TableBodyFormRow.styled';
 

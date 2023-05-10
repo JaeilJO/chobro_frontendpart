@@ -28,7 +28,6 @@ const Avatar = () => {
     return (
         <AvatarBox>
             <StyledAvatar onClick={toggleAvatarModal}>{name[0]}</StyledAvatar>
-            <AvatarModal $modal={avatarModalStatus} />
         </AvatarBox>
     );
 };

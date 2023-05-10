@@ -1,4 +1,4 @@
-import NavigationLink from '../Links/NavigationLink/NavigationLink';
+import NavigationLink from './NavigationLink/NavigationLink';
 
 import { useRouter } from 'next/router';
 import { StyledNavigation } from './Navigation.styled';

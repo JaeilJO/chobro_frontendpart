@@ -8,14 +8,23 @@ import { setUser } from '../redux/features/userSlice';
 import { isCookieEmpty } from '../utils/utils';
 import TableActiveButtonModal from '../components/Modals/TableActiveButtonModal/TableActiveButtonModal';
 import { useAppSelector } from '../redux/hooks';
+import AvatarModal from '../components/Modals/AvatarModal/AvatarModal';
+import AuthModal from '../components/Modals/AuthModal/AuthModal';
 
 const Active = () => {
     const TableActiveButtonModalToggle = useAppSelector((state) => state.modal?.tableActiveModal.toggle_status);
+    const AvatarModalToggle = useAppSelector((state) => state.modal.headerAvatarModal);
+    const headerLoginButtonModalToggle = useAppSelector((state) => state.modal.headerLoginButtonModal);
+    const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
     return (
         <>
             <Header />
             <Main />
+
+            {/* modals */}
             {TableActiveButtonModalToggle ? <TableActiveButtonModal /> : <></>}
+            {<AvatarModal $modal={AvatarModalToggle} />}
+            {headerLoginButtonModalToggle && !isLoggedIn && <AuthModal />}
         </>
     );
 };

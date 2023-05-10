@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 
 //Component
-import SignUpForm from '../../Forms/SignUpForm/SignUpForm';
+
 import AuthContents from './AuthContents/AuthContents';
-import LoginForm from '../../Forms/LoginForm/LoginForm';
+import LoginForm from './LoginForm/LoginForm';
 
 //Stlye
 import { ModalBackground, StyledAuthModal } from './AuthModal.styled';
@@ -11,10 +11,11 @@ import { ModalBackground, StyledAuthModal } from './AuthModal.styled';
 //Redux
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { toggleHeaderLoginButtonModal } from '../../../redux/features/modalStatusSlice';
+import SignUpForm from './SignUpForm/SignUpForm';
 
 const AuthModal = () => {
     //for redux
-    const authModalMode = useAppSelector((state) => state.modalStatus.authMode);
+    const authModalMode = useAppSelector((state) => state.modal.authMode);
     const dispatch = useAppDispatch();
 
     //toggle onOff Modal
@@ -34,6 +35,7 @@ const AuthModal = () => {
                     <AuthContents modalMode={authModalMode} mode={'login'}>
                         <LoginForm />
                     </AuthContents>
+
                     <AuthContents modalMode={authModalMode} mode={'signup'}>
                         <SignUpForm />
                     </AuthContents>

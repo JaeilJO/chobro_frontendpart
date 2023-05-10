@@ -2,7 +2,7 @@ import React from 'react';
 //Component
 import Logo from '../../Logo/Logo';
 import Navigation from '../../Navigation/Navigation';
-import LoginButton from '../../Buttons/LoginButton/LoginButton';
+import LoginButton from '../../LoginButton/LoginButton';
 import Avatar from '../../Avatar/Avatar';
 import AuthModal from '../../Modals/AuthModal/AuthModal';
 
@@ -31,7 +31,6 @@ const Header = () => {
             </StyledHeader>
 
             {/* 로그인이 된 상태에서 Modal에 접근하지 못하도록 하는 것 */}
-            {LoginButtonModalStatus && !isLogin && <AuthModal />}
         </>
     );
 };

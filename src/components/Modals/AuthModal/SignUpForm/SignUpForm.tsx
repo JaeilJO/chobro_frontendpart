@@ -1,12 +1,5 @@
 import React from 'react';
 // Components
-import AuthButton from '../../Buttons/AuthButton/AuthButton';
-import AuthInput from '../../Inputs/AuthInput/AuthInput';
-
-// Redux
-import { useAppDispatch } from '../../../redux/hooks';
-import { changeMode } from '../../../redux/features/modalStatusSlice';
-import { useSignUpMutation } from '../../../redux/services/userApi';
 
 // React Hook form
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -19,6 +12,11 @@ import { AuthFormTitle, RecomendText, RecomendTextButton, StyledAuthForm } from 
 
 // Datas
 import { inputItems } from './SignUpInputItems';
+import { useSignUpMutation } from '../../../../redux/services/userApi';
+import { changeMode } from '../../../../redux/features/modalStatusSlice';
+import { useAppDispatch } from '../../../../redux/hooks';
+import AuthInput from '../AuthInput/AuthInput';
+import AuthButton from '../AuthButton/AuthButton';
 
 const SignUpForm = () => {
     //for redux

@@ -1,4 +1,4 @@
-import { ColorTypes } from '../../../styles/theme';
+import { ColorTypes } from '../../../../styles/theme';
 
 //Component Props
 export interface AuthButtonProps {

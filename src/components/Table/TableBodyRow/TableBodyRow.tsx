@@ -1,5 +1,5 @@
 import { calculatePercentage } from '../../../utils/utils';
-import Progress from '../../Progress/Progress';
+import Progress from '../Progress/Progress';
 import ActiveButton from '../ActiveButton/ActiveButton';
 import TableBodyItem from '../TableBodyItem/TableBodyItem';
 import { StyledTableBodyRow } from './TableBodyRow.styled';

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useCallback } from 'react';
 import { StyledPagination } from './Pagination.styled';
-import PaginationButton from '../../Buttons/PaginationButton/PageNationButton';
+import PaginationButton from '../PaginationButton/PageNationButton';
 
 interface PaginationProps {
     setCurrentTable: Dispatch<SetStateAction<number>>;

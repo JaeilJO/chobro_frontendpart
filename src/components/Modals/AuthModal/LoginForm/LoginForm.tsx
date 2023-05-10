@@ -2,25 +2,25 @@
 import { AuthFormTitle, RecomendText, RecomendTextButton, StyledAuthForm } from '../AuthFormStyle';
 
 // Component
-import AuthButton from '../../Buttons/AuthButton/AuthButton';
-import AuthLink from '../../Links/AuthLink/AuthLink';
-import AuthInput from '../../Inputs/AuthInput/AuthInput';
+import AuthButton from '../AuthButton/AuthButton';
+import AuthLink from '../AuthLink/AuthLink';
+import AuthInput from '../AuthInput/AuthInput';
 
 // React Hook Form
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 // Redux
-import { useLoginMutation } from '../../../redux/services/authApi';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { setUser } from '../../../redux/features/userSlice';
-import { changeMode } from '../../../redux/features/modalStatusSlice';
+import { useLoginMutation } from '../../../../redux/services/authApi';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
+import { setUser } from '../../../../redux/features/userSlice';
+import { changeMode } from '../../../../redux/features/modalStatusSlice';
 
 // Datas
 import { inputItems } from './LoginFormInputItems';
 
 // Types
 import { Inputs } from './LoginForm.types';
-import { HasEmptyFileds, HasSpacingInPassword, IsLoginStatusTrue } from '../../../utils/utils';
+import { HasEmptyFileds, HasSpacingInPassword, IsLoginStatusTrue } from '../../../../utils/utils';
 
 const LoginForm = () => {
     //for redux

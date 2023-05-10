@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { TableHeadRow } from './Table.styled';
+import { TableHeadRow, TableMain } from './Table.styled';
 
 import TableBodyRow from './TableBodyRow/TableBodyRow';
 import TableHeadItem from './TableHeadItem/TableHeadItem';
@@ -27,7 +27,7 @@ export const Table = () => {
 
     return (
         <>
-            <table style={{ borderSpacing: 0 }}>
+            <TableMain>
                 {/* Table Head */}
                 <thead>
                     <TableHeadRow>
@@ -65,7 +65,7 @@ export const Table = () => {
                         }
                     })}
                 </tbody>
-            </table>
+            </TableMain>
             <Pagination currentTable={currentTable} setCurrentTable={setCurrentTable} pageCount={pages.length} />
         </>
     );
